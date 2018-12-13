@@ -17,7 +17,7 @@ body {
   position: fixed;
   width: 100%;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
 
   &-grey {
     background-color: $dark-color;
@@ -61,20 +61,33 @@ body {
   color: $white-color;
   height: 50px;
   width: 100%;
+
   z-index: $main-wraper-z-index;
   .header-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     max-width: 1024px;
     margin: 0 auto;
     width: 100%;
+
     .header-name {
-      float: right;
       font-style: italic;
       margin: 15px 30px;
     }
+
     .header-shop {
       background: url('/assets/shop.png');
       margin: 15px 30px;
-      float: left;
+    }
+
+    .header-logout {
+      color: $blue-color;
+      margin: 15px 30px;
+    }
+
+    &-right {
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }
@@ -90,4 +103,19 @@ body {
   width: 100%;
   text-align: center;
   z-index: $main-wraper-z-index;
+}
+
+.error {
+
+  .page-wrapper-grey {
+    display: none;
+  }
+
+  .header {
+    display: none !important;
+  }
+
+  .footer {
+    display: none;
+  }
 }

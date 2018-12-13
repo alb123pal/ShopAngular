@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {throwError, Observable } from 'rxjs';
 import { catchError} from 'rxjs/operators';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Injectable()
 export class UserService {
@@ -10,41 +11,60 @@ export class UserService {
 
     authorizationUser(login: string, password: string) {
         const params = {
-            login: 'frank',
-            password: 'frank123'
+            login: login,
+            password: password
         };
-        // const params = new URLSearchParams();
-        // params.set('login', login);
-        // params.set('password', password);
-
+        localStorage.setItem('login', params.login);
         return this.httpClient.post(`${this.baseUrl}api/login`,
             params, { headers: new HttpHeaders({
-                        'content-type': 'application/json',
-                        // 'Authorization': 'session-token',
-                        // 'Access-Control-Allow-Origin' : '*',
-                        // 'Access-Control-Allow-Methods' : 'GET,POST,PATCH,DELETE,PUT,OPTIONS',
-                        // 'Access-Control-Allow-Headers' : 'Origin, Content-Type, X-Auth-Token, content-type, sesion-token'
+                        'Access-Control-Expose-Headers': 'session-token',
+                        'Access-Control-Allow-Headers': 'session-token',
                 }),
                 responseType: 'text',
-                observe: 'response' as 'body',
-                // withCredentials: true
+                observe: 'response',
         })
-        .subscribe((res) => {
-            console.log(res);
-            // let payload = res.json();
-            let headers = res.headers;
-        });
-        // .pipe(catchError(this.handlerError));
+        .pipe(catchError(this.handlerError));
+    }
+
+    getProducts() {
+        const sessionToken = localStorage.getItem('sessionToken');
+        return this.httpClient.get(`${this.baseUrl}api/products`, { headers: new HttpHeaders({
+            'session-token': sessionToken,
+            }),
+            observe: 'response',
+        })
+        .pipe(catchError(this.handlerError));
+    }
+
+    getRoles() {
+        const sessionToken = localStorage.getItem('sessionToken');
+        console.log('get Roles sesion token: ', localStorage.getItem('sessionToken'));
+        return this.httpClient.get(`${this.baseUrl}api/roles`, { headers: new HttpHeaders({
+            'session-token': sessionToken,
+            }),
+            observe: 'response',
+        })
+        .pipe(catchError(this.handlerError));
+    }
+
+    getUsers() {
+        const sessionToken = localStorage.getItem('sessionToken');
+        console.log('get Roles sesion token: ', localStorage.getItem('sessionToken'));
+        return this.httpClient.get(`${this.baseUrl}api/users`, { headers: new HttpHeaders({
+            'session-token': sessionToken,
+            }),
+            observe: 'response',
+        })
+        .pipe(catchError(this.handlerError));
     }
 
     private handlerError(errorResponse: HttpErrorResponse) {
-        console.log(errorResponse);
         if (errorResponse instanceof HttpErrorResponse) {
             if (!navigator.onLine) {
                 console.error('There is a problem with a internet connection');
             } else {
                 if (errorResponse.status === 400) {
-                    console.error('400:', errorResponse);
+                    console.error('Failed Authorization');
                 }
             console.error('Client Side Error: ', errorResponse.error.message);
             }
