@@ -58,6 +58,16 @@ export class UserService {
         .pipe(catchError(this.handlerError));
     }
 
+    logout() {
+        const sessionToken = localStorage.getItem('sessionToken');
+        return this.httpClient.get(`${this.baseUrl}api/logout`, { headers: new HttpHeaders({
+            'session-token': sessionToken,
+            }),
+            observe: 'response',
+        })
+        .pipe(catchError(this.handlerError));
+    }
+
     private handlerError(errorResponse: HttpErrorResponse) {
         if (errorResponse instanceof HttpErrorResponse) {
             if (!navigator.onLine) {

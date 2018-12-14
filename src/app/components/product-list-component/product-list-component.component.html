@@ -4,149 +4,105 @@
                 <div class="header-panel">
                     <span class="header-shop">Logo</span>
                     <div class="header-panel-right">
-                        <span class="header-name">Hello John!</span>
-                        <span class="header-logout">Logout</span>
+                        <span class="header-name">Hello {{userName}}</span>
+                        <span class="header-logout" (click)="logout()">Logout</span>
                     </div>
                 </div>
             </header>
-  <aside class="filters-panel-wrapper-advanced">
-          <div class="filters-panel-advanced">
-                  <span>Filters Chceckbox Dropdown</span>
-          </div>
-  </aside>
-  <div class="page-wrapper-content">
+          <div class="page-wrapper-content">
           <aside class="filters-panel">
+                  <div class="add-products">
+                          <button *ngIf="isAdmin" class="add-products__button">Add products</button>
+                  </div>
                   <div class="filters-panel-options">
-                          <button class="button" onclick="showHideFilterOptions()">Filter options</button>
-                          <input class="input" type="text" name="filter" placeholder="Filter by text">
+                          <button class="button" (click)="showHideFilterOptions()">Filter options</button>
+                          <input class="input" type="text" name="filter" placeholder="Search product">
                           <img class="icon-search" src='../assets/search.png'>
                   </div>
           </aside>
+          <aside class="filters-panel-advanced" [class.filters-panel-advanced--display]="isHiddenFilterOptions">
+                  <div class="filters-panel-advanced-options" >
+                          <div class="filters-section-upper-left">
+                                  <div>
+                                          <label class="filters-section-label filters-section-label-left">
+                                                  <span>Available only</span>
+                                                  <input class="checkbox" type="checkbox">
+                                          </label>
+                                          
+                                  </div>
+                                  <div>
+                                        <label class="filters-section-label">Gender</label>
+                                        <div class="gender-checkbox-edit">
+                                              <label class="label-checkbox">
+                                                      <input type="radio" name="gender" value="male"> 
+                                                      <p>Male</p>
+                                                      <span class="checkmark"></span>
+                                              </label>
+                                              <label class="label-checkbox">
+                                                      <input type="radio" name="gender" value="female"> 
+                                                      <p>Female</p>
+                                                      <span class="checkmark"></span>
+                                              </label>
+                                              <label class="label-checkbox">
+                                                      <input type="radio" name="gender" value="other">
+                                                      <p>Other</p>
+                                                      <span class="checkmark"></span>
+                                              </label>
+                                        </div>
+                                  </div>
+                          </div>
+                          <div class="filters-section-upper-right">
+                                <div class="modal-edit-dropdown">
+                                        <label class="filters-section-label">Category</label>
+                                        <select>
+                                                <option value="wear">Wear</option>
+                                                <option value="jeans">Jeans</option>
+                                                <option value="boats">Boats</option>
+                                        </select>
+                                </div>
+                                <div class="modal-edit-dropdown">
+                                        <label>Rating:</label>
+                                        <select>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                        </select>
+                                </div>
+                          </div>
+                          <div class="filters-section-bottom-left">
+                                <div class="filters-section__input">
+                                        <label class="filters-section-label filters-section-label-left">Price</label>
+                                        <input type="number" placeholder="From" min="0">
+                                        <input type="number" placeholder="To" min="0">
+                                </div>
+                          </div>
+                          <div class="filters-section-bottom-right">
+                                <button class="button" (click)="showHideFilterOptions()">Apply</button>
+                                <button class="button" (click)="showHideFilterOptions()">Clear</button>
+                          </div>
+                  </div>
+          </aside>
           <section class="list-articles">
-                  <article class="article-item">
-                          <img src='../assets/items/1.jpg'>
-                          <div class="panel-stars">
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--inactive"></span>
-                                  <span class="star star--inactive"></span>
-                          </div>
-                          <div class="article-item__content">
-                                  <h2>Lorem ipsum item 1</h2>
-                                  <hr />
-                                  <div class="article-item__vertical-text-overflow">
-                                          <p>1 Lorem ipsum dolor sit amet, connim veniam, quis nnim veniam, quis nnim veniam, quis nnim veniam, quis nnim veniam, quis nnim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip eorem ipsum dolor sit amet, connim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exorem ipsum dolor sit amet, connim veniam, quis nostrud exercitatorem ipsum dolor sit amet, connim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exion ullamco laboris nisi ut aliquip exx ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate venim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruraliquip ex ea commodo consequat. Duis aute irure ptateor incie magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo.</p>
-                                  </div>
-                                  <div class="article-item__content-info">
-                                          <span class="item-prize"><span class="item-prize--currency">$</span>47.95</span>
-                                          <button class="button">Show more</button>  
-                                  </div>
-                          </div>
-                  </article>
-                  <article class="article-item">
-                          <img src='../assets/items/2.jpg'>
-                          <div class="panel-stars">
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--inactive"></span>
-                                  <span class="star star--inactive"></span>
-                          </div>
-                          <div class="article-item__content">
-                                  <h2>Lorem ipsum item 1</h2>
-                                  <hr />
-                                  <div class="article-item__vertical-text-overflow">
-                                          <p>1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                  </div>
-                                  <div class="article-item__content-info">
-                                          <span class="item-prize"><span class="item-prize--currency">$</span>47.95</span>
-                                          <button class="button">Show more</button>  
-                                  </div>
-                          </div>
-                  </article>
-                  <article class="article-item">
-                          <img src='../assets/items/3.jpg'>
-                          <div class="panel-stars">
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--inactive"></span>
-                                  <span class="star star--inactive"></span>
-                          </div>
-                          <div class="article-item__content">
-                                  <h2>Lorem ipsum item 1</h2>
-                                  <hr />
-                                  <div class="article-item__vertical-text-overflow">
-                                          <p>1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                  </div>                                                <div class="article-item__content-info">
-                                  <span class="item-prize"><span class="item-prize--currency">$</span>47.95</span>
-                                  <button class="button">Show more</button>  
-                                  </div>
-                          </div>
-                  </article>
-                  <article class="article-item">
-                          <img src='../assets/items/2.jpg'>
-                          <div class="panel-stars">
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--inactive"></span>
-                                  <span class="star star--inactive"></span>
-                          </div>
-                          <div class="article-item__content">
-                                  <h2>Lorem ipsum item 1</h2>
-                                  <hr />
-                                  <div class="article-item__vertical-text-overflow">
-                                          <p>1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                  </div>
-                                  <div class="article-item__content-info">
-                                          <span class="item-prize"><span class="item-prize--currency">$</span>47.95</span>
-                                          <button class="button">Show more</button>  
-                                  </div>
-                          </div>
-                  </article>
-                  <article class="article-item">
-                          <img src='../assets/items/3.jpg'>
-                          <div class="panel-stars">
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--inactive"></span>
-                                  <span class="star star--inactive"></span>
-                          </div>
-                          <div class="article-item__content">
-                                  <h2>Lorem ipsum item 1</h2>
-                                  <hr />
-                                  <div class="article-item__vertical-text-overflow">
-                                          <p>1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                  </div>
-                                  <div class="article-item__content-info">
-                                          <span class="item-prize"><span class="item-prize--currency">$</span>47.95</span>
-                                          <button class="button">Show more</button>  
-                                  </div>
-                          </div>
-                  </article>
-                  <article class="article-item">
-                          <img src='../assets/items/1.jpg'>
-                          <div class="panel-stars">
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--active"></span>
-                                  <span class="star star--inactive"></span>
-                                  <span class="star star--inactive"></span>
-                          </div>
-                          <div class="article-item__content">
-                                  <h2>Lorem ipsum item 1</h2>
-                                  <hr />
-                                  <div class="article-item__vertical-text-overflow">
-                                          <p>1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                  </div>
-                                  <div class="article-item__content-info">
-                                          <span class="item-prize"><span class="item-prize--currency">$</span>47.95</span>
-                                          <button class="button">Show more</button>  
-                                  </div>
-                          </div>
+                  <article *ngFor="let article of allProducts" class="article-item">
+                        <img src={{article.image}}>
+                        <div class="panel-stars">
+                                <span class="star star--active" *ngFor="let activeStar of article.activeStar"></span>
+                                <span class="star star--inactive" *ngFor="let activeStar of article.inActiveStar"></span>
+                        </div>
+                        <div class="article-item__content">
+                                <h2>{{article.name}}</h2>
+                                <hr />
+                                <div class="article-item__vertical-text-overflow">
+                                        <p>{{article.description}}</p>
+                                </div>
+                                <div class="article-item__content-info">
+                                        <span class="item-prize"><span class="item-prize--currency">$</span>{{article.cost}}</span>
+                                        <button [hidden]="isAdmin" class="button">Delete products</button>  
+                                        <button class="button">Show more</button>  
+                                </div>
+                        </div>
                   </article>
           </section>
   </div>

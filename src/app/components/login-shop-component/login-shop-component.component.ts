@@ -27,15 +27,14 @@ export class LoginShopComponentComponent implements OnInit {
         this._userService.getUsers().subscribe(
           (responseRole) => {
             const loggedUser = this.verificationUser(responseRole);
-            console.log(loggedUser);
+            localStorage.setItem('login', loggedUser.login);
             isUser = loggedUser.roleId;
             if (isUser) {
               localStorage.setItem('isAdmin', 'false');
-              this._router.navigate(['lists']);
             } else {
               localStorage.setItem('isAdmin', 'true');
-              this._router.navigate(['details']);
             }
+            this._router.navigate(['lists']);
           }
         );
       },
@@ -50,7 +49,6 @@ export class LoginShopComponentComponent implements OnInit {
     const login = localStorage.getItem('login');
     let user;
     responseRole.body.find( obj => {
-      console.log(obj.login, login, obj.login === login);
       if (obj.login === login) {
         user = obj;
       }
