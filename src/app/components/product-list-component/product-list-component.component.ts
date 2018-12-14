@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-list-component.component.scss']
 })
 export class ProductListComponentComponent implements OnInit {
-  isHiddenFilterOptions = true;
+  isHiddenFilterOptions = false;
   userName = '';
   isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
   allProducts;
@@ -30,7 +30,6 @@ export class ProductListComponentComponent implements OnInit {
             this.allProducts[i].inActiveStar.push('1');
           }
         }
-        console.log(this.allProducts);
       }
     );
   }

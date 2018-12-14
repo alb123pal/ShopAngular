@@ -12,11 +12,11 @@
           <div class="page-wrapper-content">
           <aside class="filters-panel">
                   <div class="add-products">
-                          <button *ngIf="isAdmin" class="add-products__button">Add products</button>
+                          <button [hidden]="!isAdmin" class="add-products__button">Add products</button>
                   </div>
                   <div class="filters-panel-options">
                           <button class="button" (click)="showHideFilterOptions()">Filter options</button>
-                          <input class="input" type="text" name="filter" placeholder="Search product">
+                          <input class="input" type="text" name="filter" placeholder="Search product" [(ngModel)]="searchProduct">
                           <img class="icon-search" src='../assets/search.png'>
                   </div>
           </aside>
@@ -85,7 +85,7 @@
                   </div>
           </aside>
           <section class="list-articles">
-                  <article *ngFor="let article of allProducts" class="article-item">
+                  <article *ngFor="let article of allProducts | productFilter: searchProduct" class="article-item">
                         <img src={{article.image}}>
                         <div class="panel-stars">
                                 <span class="star star--active" *ngFor="let activeStar of article.activeStar"></span>
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="article-item__content-info">
                                         <span class="item-prize"><span class="item-prize--currency">$</span>{{article.cost}}</span>
-                                        <button [hidden]="isAdmin" class="button">Delete products</button>  
+                                        <button [hidden]="!isAdmin" class="button">Delete products</button>  
                                         <button class="button">Show more</button>  
                                 </div>
                         </div>
