@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
@@ -12,8 +12,15 @@ export class ProductListComponentComponent implements OnInit {
   userName = '';
   isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
   allProducts;
+  productFilter: any;
+  category: number;
+  rating: number;
+  priceFrom: number;
+  priceTo: number;
+  gender: string;
 
-  constructor(private _userService: UserService, private _route: Router) { }
+  constructor(private _userService: UserService, private _route: Router) {
+  }
 
   ngOnInit() {
     this.userName = localStorage.getItem('login');
@@ -32,6 +39,30 @@ export class ProductListComponentComponent implements OnInit {
         }
       }
     );
+  }
+  applyFilter() {
+    const params = {};
+    this.gender !== undefined ? params.gender = this.gender : null;
+    this.category !== undefined ? params.categoryId = +this.category : null;
+    this.rating !== undefined ? params.rating = +this.rating : null;
+    this.priceFrom !== undefined ? params.priceFrom = +this.priceFrom : null;
+    this.priceTo !== undefined ? params.priceTo = +this.priceTo : null;
+    this.productFilter = params;
+  }
+
+  clearFilter() {
+    this.productFilter = {};
+  }
+
+  searchProduct(event) {
+    this.productFilter = {};
+    if (event.target.value === '') {
+      this.productFilter = {};
+    }
+    this.productFilter = {
+      'searchProduct': event.target.value
+    };
+    console.log(event.target.value);
   }
 
   showHideFilterOptions() {

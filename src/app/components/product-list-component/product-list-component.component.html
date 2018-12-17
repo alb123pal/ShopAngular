@@ -16,7 +16,7 @@
                   </div>
                   <div class="filters-panel-options">
                           <button class="button" (click)="showHideFilterOptions()">Filter options</button>
-                          <input class="input" type="text" name="filter" placeholder="Search product" [(ngModel)]="searchProduct">
+                          <input class="input" type="text" name="filter" placeholder="Search product" (input)="searchProduct($event)">
                           <img class="icon-search" src='../assets/search.png'>
                   </div>
           </aside>
@@ -34,17 +34,17 @@
                                         <label class="filters-section-label">Gender</label>
                                         <div class="gender-checkbox-edit">
                                               <label class="label-checkbox">
-                                                      <input type="radio" name="gender" value="male"> 
+                                                      <input type="radio" name="gender" value="Man" [(ngModel)]="gender"> 
                                                       <p>Male</p>
                                                       <span class="checkmark"></span>
                                               </label>
                                               <label class="label-checkbox">
-                                                      <input type="radio" name="gender" value="female"> 
+                                                      <input type="radio" name="gender" value="Woman" [(ngModel)]="gender"> 
                                                       <p>Female</p>
                                                       <span class="checkmark"></span>
                                               </label>
                                               <label class="label-checkbox">
-                                                      <input type="radio" name="gender" value="other">
+                                                      <input type="radio" name="gender" value="Unisex" [(ngModel)]="gender">
                                                       <p>Other</p>
                                                       <span class="checkmark"></span>
                                               </label>
@@ -54,15 +54,17 @@
                           <div class="filters-section-upper-right">
                                 <div class="modal-edit-dropdown">
                                         <label class="filters-section-label">Category</label>
-                                        <select>
-                                                <option value="wear">Wear</option>
-                                                <option value="jeans">Jeans</option>
-                                                <option value="boats">Boats</option>
+                                        <select id="category" [(ngModel)]="category" name="category">
+                                                <option value="0">Wear</option>
+                                                <option value="1">Jeans</option>
+                                                <option value="2">Boats</option>
+                                                <option value="3">Boats</option>
+                                                <option value="4">Boats</option>
                                         </select>
                                 </div>
                                 <div class="modal-edit-dropdown">
                                         <label>Rating:</label>
-                                        <select>
+                                        <select id="rating" [(ngModel)]="rating" name="rating">
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -74,18 +76,18 @@
                           <div class="filters-section-bottom-left">
                                 <div class="filters-section__input">
                                         <label class="filters-section-label filters-section-label-left">Price</label>
-                                        <input type="number" placeholder="From" min="0">
-                                        <input type="number" placeholder="To" min="0">
+                                        <input type="number" placeholder="From" min="0" [(ngModel)]="priceFrom">
+                                        <input type="number" placeholder="To" min="0" [(ngModel)]="priceTo">
                                 </div>
                           </div>
                           <div class="filters-section-bottom-right">
-                                <button class="button" (click)="showHideFilterOptions()">Apply</button>
-                                <button class="button" (click)="showHideFilterOptions()">Clear</button>
+                                <button class="button" (click)="applyFilter()">Apply</button>
+                                <button class="button" (click)="clearFilter()">Clear</button>
                           </div>
                   </div>
           </aside>
           <section class="list-articles">
-                  <article *ngFor="let article of allProducts | productFilter: searchProduct" class="article-item">
+                  <article *ngFor="let article of allProducts | productFilter: productFilter" class="article-item">
                         <img src={{article.image}}>
                         <div class="panel-stars">
                                 <span class="star star--active" *ngFor="let activeStar of article.activeStar"></span>

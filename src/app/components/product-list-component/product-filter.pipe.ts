@@ -4,12 +4,38 @@ import { PipeTransform, Pipe } from '@angular/core';
     name: 'productFilter'
 })
 export class ProductFilterPipe implements PipeTransform {
-    transform(products: [], searchProduct) {
-        if (!products || ! searchProduct) {
+    transform(products: [], filter: {[key: string]: any }) {
+        if (!products || ! filter) {
             return products;
         }
-        return products.filter(product =>
-            product.name.toLowerCase().indexOf(searchProduct.toLowerCase()) !== -1);
-
-    }
+        if (filter.searchProduct !== 'searchProduct' && filter.searchProduct !== undefined) {
+            return products.filter( (product) => {
+                return product.name.toLowerCase().indexOf(filter.searchProduct.toLowerCase()) !== -1;
+            });
+                // console.log('elo2, ', product);
+                // product.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1);
+        } else {
+            return products.filter(item => {
+                const notMatchingField = Object.keys(filter)
+                                             .find( (key) => {
+                                                 let returnKey;
+                                                 if (key === 'priceFrom') {
+                                                    if (filter[key] > item['cost']) {
+                                                        returnKey = key;
+                                                    }
+                                                 } else if (key === 'priceTo') {
+                                                    if (filter[key] < item['cost']) {
+                                                        returnKey = key;
+                                                    }
+                                                 } else {
+                                                    if (item[key] !== filter[key]) {
+                                                        returnKey = key;
+                                                     }
+                                                 }
+                                                 return returnKey;
+                                             });
+                return !notMatchingField;
+            });
+        }
+        }
 }

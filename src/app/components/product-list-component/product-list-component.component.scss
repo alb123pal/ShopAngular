@@ -28,7 +28,7 @@ body {
   z-index: $main-wraper-z-index;
 
   @media (min-width: 550px) {
-    // grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   @media (min-width: 1024px) {
