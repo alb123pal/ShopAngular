@@ -9,6 +9,10 @@ export class UserService {
     constructor(private httpClient: HttpClient) {}
     baseUrl = 'http://localhost:3000/';
 
+    getUser() {
+        return ['stasiek', 'franek'];
+    }
+
     authorizationUser(login: string, password: string) {
         const params = {
             login: login,

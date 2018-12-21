@@ -12,8 +12,6 @@ export class ProductFilterPipe implements PipeTransform {
             return products.filter( (product) => {
                 return product.name.toLowerCase().indexOf(filter.searchProduct.toLowerCase()) !== -1;
             });
-                // console.log('elo2, ', product);
-                // product.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1);
         } else {
             return products.filter(item => {
                 const notMatchingField = Object.keys(filter)

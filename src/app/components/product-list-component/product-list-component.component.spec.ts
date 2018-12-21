@@ -5,8 +5,6 @@ import {RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {ProductFilterPipe} from './product-filter.pipe';
-import {SharedModule} from '../../../shared.module';
 
 describe('ProductListComponentComponent', () => {
   let component: ProductListComponentComponent;
