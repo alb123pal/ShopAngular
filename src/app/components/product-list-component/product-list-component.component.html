@@ -102,7 +102,7 @@
                                 <div class="article-item__content-info">
                                         <span class="item-prize"><span class="item-prize--currency">$</span>{{article.cost}}</span>
                                         <button [hidden]="!isAdmin" class="button">Delete products</button>  
-                                        <button class="button">Show more</button>  
+                                        <button class="button" (click)="navigateToDetails(article.id)">Show more</button>  
                                 </div>
                         </div>
                   </article>

@@ -7,9 +7,9 @@ import { ProductDetailsComponentComponent } from './components/product-details-c
 import { ErrorPageComponentComponent } from './components/error-page-component/error-page-component.component';
 import { ErrorServerComponentComponent } from './components/error-server-component/error-server-component.component';
 
-import { ProductListCanActivateGuard } from './components/services/product-list-can-activate-guard';
+import { ProductListCainActivateGuard } from './components/services/product-list-can-activate-guard';
 import { LoginCanActivateGuard } from './components/services/login-can-activate-guard';
-import { ProductDetailCanActivateGuard } from './components/services/product-detail-can-activate-guard';
+import { ProductDeatilsCainActivateGuard } from './components/services/product-details-can-activate-guard';
 
 const routes: Routes = [
   {
@@ -20,12 +20,12 @@ const routes: Routes = [
   {
     path: 'lists',
     component: ProductListComponentComponent,
-    canActivate: [ProductListCanActivateGuard]
+    canActivate: [ProductListCainActivateGuard]
   },
   {
     path: 'details',
     component: ProductDetailsComponentComponent,
-    canActivate: [ProductDetailCanActivateGuard]
+    canActivate: [ProductDeatilsCainActivateGuard]
   },
   {
     path: 'error',

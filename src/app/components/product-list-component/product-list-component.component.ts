@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { DataService } from '../services/product-data.service';
 
 @Component({
   selector: 'app-product-list-component',
@@ -12,6 +13,7 @@ export class ProductListComponentComponent implements OnInit {
   userName = '';
   isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
   allProducts;
+  product: any;
   productFilter: any;
   category: number;
   rating: number;
@@ -19,7 +21,7 @@ export class ProductListComponentComponent implements OnInit {
   priceTo: number;
   gender: string;
 
-  constructor(private _userService: UserService, private _route: Router) {
+  constructor(private _userService: UserService, private _route: Router, private _productDetails: DataService) {
   }
 
   ngOnInit() {
@@ -62,11 +64,18 @@ export class ProductListComponentComponent implements OnInit {
     this.productFilter = {
       'searchProduct': event.target.value
     };
-    console.log(event.target.value);
   }
 
   showHideFilterOptions() {
     this.isHiddenFilterOptions = !this.isHiddenFilterOptions;
+  }
+
+  navigateToDetails(idProduct) {
+    this.product = this.allProducts.filter(obj => {
+      return obj.id === idProduct;
+    });
+    this._productDetails.changeProduct(this.product);
+    this._route.navigate(['/details', {'id': idProduct}]);
   }
 
   logout() {

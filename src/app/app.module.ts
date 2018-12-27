@@ -16,9 +16,10 @@ import { ErrorPageComponentComponent } from './components/error-page-component/e
 import { ErrorServerComponentComponent } from './components/error-server-component/error-server-component.component';
 
 import { UserService } from './components/services/user.service';
-import { ProductListCanActivateGuard } from './components/services/product-list-can-activate-guard';
+import { ProductListCainActivateGuard } from './components/services/product-list-can-activate-guard';
+import { DataService } from './components/services/product-data.service';
 import { LoginCanActivateGuard } from './components/services/login-can-activate-guard';
-import { ProductDetailCanActivateGuard } from './components/services/product-detail-can-activate-guard';
+import { ProductDeatilsCainActivateGuard } from './components/services/product-details-can-activate-guard';
 
 @NgModule({
   declarations: [
@@ -43,9 +44,10 @@ import { ProductDetailCanActivateGuard } from './components/services/product-det
     multi: true
   },
   UserService,
-  ProductListCanActivateGuard,
+  ProductListCainActivateGuard,
+  ProductDeatilsCainActivateGuard,
+  DataService,
   LoginCanActivateGuard,
-  ProductDetailCanActivateGuard
 ],
   bootstrap: [AppComponent]
 })
