@@ -25,7 +25,7 @@
                                       <p>{{product[0].description}}</p>
                                       <div class="additional-panel">
                                         <span class="additional-panel__gender">{{product[0].gender}}</span>
-                                        <button class="additional-panel__edit" (click)="changeDisplayModal()">Edit</button>
+                                        <button [hidden]="!isAdmin" class="additional-panel__edit" (click)="changeDisplayModal()">Edit</button>
                                       </div>
                                       <hr />
                                       <div class="article-item__content-info">
