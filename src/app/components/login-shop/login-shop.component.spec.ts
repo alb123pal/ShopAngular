@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
-import { LoginShopComponentComponent } from './login-shop-component.component';
+import { LoginShopComponentComponent } from './login-shop.component';
 import {DebugElement, inject} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import { UserService } from '../services/user.service';

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorPageComponentComponent } from './error-page-component.component';
+import { ErrorPageComponentComponent } from './error-page.component';
 
 describe('ErrorPageComponentComponent', () => {
   let component: ErrorPageComponentComponent;
