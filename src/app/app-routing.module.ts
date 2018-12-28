@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginShopComponentComponent } from './components/login-shop-component/login-shop-component.component';
-import { ProductListComponentComponent } from './components/product-list-component/product-list-component.component';
-import { ProductDetailsComponentComponent } from './components/product-details-component/product-details-component.component';
-import { ErrorPageComponentComponent } from './components/error-page-component/error-page-component.component';
-import { ErrorServerComponentComponent } from './components/error-server-component/error-server-component.component';
+import { LoginShopComponentComponent } from './components/login-shop/login-shop.component';
+import { ProductListComponentComponent } from './components/product-list/product-list.component';
+import { ProductDetailsComponentComponent } from './components/product-details/product-details.component';
+import { ErrorPageComponentComponent } from './components/error-page/error-page.component';
+import { ErrorServerComponentComponent } from './components/error-server/error-server.component';
 
 import { ProductListCainActivateGuard } from './components/services/product-list-can-activate-guard';
 import { LoginCanActivateGuard } from './components/services/login-can-activate-guard';

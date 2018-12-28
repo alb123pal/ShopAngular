@@ -5,8 +5,8 @@ import { DataService } from '../services/product-data.service';
 
 @Component({
   selector: 'app-product-details-component',
-  templateUrl: './product-details-component.component.html',
-  styleUrls: ['./product-details-component.component.scss']
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponentComponent implements OnInit {
   userName = '';

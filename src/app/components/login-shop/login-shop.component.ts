@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import {HttpHeaders, HttpRequest} from '@angular/common/http';
+
 @Component({
   selector: 'app-login-shop-component',
-  templateUrl: './login-shop-component.component.html',
-  styleUrls: ['./login-shop-component.component.scss']
+  templateUrl: './login-shop.component.html',
+  styleUrls: ['./login-shop.component.scss']
 })
 export class LoginShopComponentComponent implements OnInit {
   @Input() login: string;
@@ -39,7 +39,6 @@ export class LoginShopComponentComponent implements OnInit {
       },
       (error) => {
         this.message = 'You enter wrong login or password';
-        console.log('error:', error);
       }
     );
   }

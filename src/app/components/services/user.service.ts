@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {throwError, Observable } from 'rxjs';
+import {throwError } from 'rxjs';
 import { catchError} from 'rxjs/operators';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Injectable()
 export class UserService {
@@ -42,7 +41,6 @@ export class UserService {
 
     getRoles() {
         const sessionToken = localStorage.getItem('sessionToken');
-        console.log('get Roles sesion token: ', localStorage.getItem('sessionToken'));
         return this.httpClient.get(`${this.baseUrl}api/roles`, { headers: new HttpHeaders({
             'session-token': sessionToken,
             }),
@@ -53,7 +51,6 @@ export class UserService {
 
     getUsers() {
         const sessionToken = localStorage.getItem('sessionToken');
-        console.log('get Roles sesion token: ', localStorage.getItem('sessionToken'));
         return this.httpClient.get(`${this.baseUrl}api/users`, { headers: new HttpHeaders({
             'session-token': sessionToken,
             }),

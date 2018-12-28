@@ -5,8 +5,8 @@ import { DataService } from '../services/product-data.service';
 
 @Component({
   selector: 'app-product-list-component',
-  templateUrl: './product-list-component.component.html',
-  styleUrls: ['./product-list-component.component.scss']
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponentComponent implements OnInit {
   isHiddenFilterOptions = false;
