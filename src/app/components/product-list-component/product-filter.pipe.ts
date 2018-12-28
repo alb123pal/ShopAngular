@@ -9,7 +9,7 @@ export class ProductFilterPipe implements PipeTransform {
             return products;
         }
         if (filter.searchProduct !== 'searchProduct' && filter.searchProduct !== undefined) {
-            return products.filter( (product) => {
+            return products.filter( (product: any) => {
                 return product.name.toLowerCase().indexOf(filter.searchProduct.toLowerCase()) !== -1;
             });
         } else {

@@ -43,12 +43,18 @@ export class ProductListComponentComponent implements OnInit {
     );
   }
   applyFilter() {
-    const params = {};
+    const params: any = {};
+    // tslint:disable-next-line:no-unused-expression
     this.gender !== undefined ? params.gender = this.gender : null;
+    // tslint:disable-next-line:no-unused-expression
     this.category !== undefined ? params.categoryId = +this.category : null;
+    // tslint:disable-next-line:no-unused-expression
     this.rating !== undefined ? params.rating = +this.rating : null;
+    // tslint:disable-next-line:no-unused-expression
     this.priceFrom !== undefined ? params.priceFrom = +this.priceFrom : null;
+    // tslint:disable-next-line:no-unused-expression
     this.priceTo !== undefined ? params.priceTo = +this.priceTo : null;
+    // tslint:disable-next-line:no-unused-expression
     this.productFilter = params;
   }
 
