@@ -9,9 +9,15 @@ export class ProductFilterPipe implements PipeTransform {
             return products;
         }
         if (filter.searchProduct !== 'searchProduct' && filter.searchProduct !== undefined) {
-            return products.filter( (product: any) => {
+            const filteredProduct = products.filter( (product: any) => {
                 return product.name.toLowerCase().indexOf(filter.searchProduct.toLowerCase()) !== -1;
             });
+            if (filteredProduct.length === 0) {
+                document.getElementById('emptyList').style.display = 'block';
+            } else {
+                document.getElementById('emptyList').style.display = 'none';
+            }
+            return filteredProduct;
         } else {
             return products.filter(item => {
                 const notMatchingField = Object.keys(filter)

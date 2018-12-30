@@ -57,8 +57,8 @@
                                         <select id="category" [(ngModel)]="category" name="category">
                                                 <option value="0">Wear</option>
                                                 <option value="1">Jeans</option>
-                                                <option value="2">Boats</option>
-                                                <option value="3">Boats</option>
+                                                <option value="2">Coats</option>
+                                                <option value="3">Sweaters</option>
                                                 <option value="4">Boats</option>
                                         </select>
                                 </div>
@@ -86,6 +86,9 @@
                           </div>
                   </div>
           </aside>
+              <section id="emptyList" class="list-articles__empty-list" *ngIf="productFilter">
+                  <h1>Nie znaleziono ofert dla wprowadzonej frazy</h1>
+              </section>
           <section class="list-articles">
                   <article *ngFor="let article of allProducts | productFilter: productFilter" class="article-item">
                         <img src={{article.image}}>

@@ -34,6 +34,14 @@ body {
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
   }
+
+  &__empty-list {
+    display: none;
+    height: 71vh;
+    margin-top: 45px;
+    text-align: center;
+    color: $white-color;
+  }
 }
 
 .panel-stars {
