@@ -38,6 +38,11 @@ describe('LoginShopComponentComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('render login modal', () => {
+    const loginModal = de.query(By.css('login-modal'));
+    expect(loginModal).toBeFalsy();
+  });
+
   it('display login caption', () => {
     const h2 = de.query(By.css('h2'));
     expect(h2.nativeElement.innerText).toBe('Login to \'Demo Shop\'');
@@ -45,23 +50,25 @@ describe('LoginShopComponentComponent', () => {
 
   it('canLogin returns just two users', () => {
     const getUsers = userService.getUser();
-    expect(getUsers).toContain('stasiek');
     expect(getUsers.length).toEqual(2);
   });
 
-  it('user authorize - check existing user login', () => {
+  it('user authorize with token', () => {
     userService.authorizationUser('stan', 'stan123');
     const token = localStorage.getItem('login');
     expect(token).not.toBeNull();
   });
 
-  it('cannot send request while login and password are invalid', () => {
+  it('cannot send request while login and password are invalid - enable or disable submit button', () => {
     const login = document.getElementsByClassName('login-modal__input-panel')[0];
     const password = document.getElementsByClassName('login-modal__input-panel')[1];
+    console.log(password);
     const submitButton = document.getElementsByClassName('login-modal__submit-button')[0].hasAttribute('disabled');
     const isError = login.classList.contains('has-error') || password.classList.contains('has-error');
-    if (!isError) {
+    if (isError) {
       expect(submitButton).toBe(true);
+    } else {
+      expect(submitButton).toBe(false);
     }
   });
 });

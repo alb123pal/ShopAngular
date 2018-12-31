@@ -9,6 +9,8 @@ import { DataService } from '../services/product-data.service';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponentComponent implements OnInit {
+
+
   userName = '';
   product;
   isOpenEditModal = false;

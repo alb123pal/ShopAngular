@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { DataService } from '../services/product-data.service';
@@ -9,6 +9,10 @@ import { DataService } from '../services/product-data.service';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponentComponent implements OnInit {
+  page = 1;
+  count;
+  perPage = 4;
+  pagesToShow = 3;
   isHiddenFilterOptions = false;
   userName = '';
   isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
@@ -29,6 +33,8 @@ export class ProductListComponentComponent implements OnInit {
     this._userService.getProducts().subscribe(
       (res) => {
         this.allProducts = res.body;
+        this.count = this.allProducts.length;
+        this.displayProductOnSpecifiedPage();
         for (let i = 0; i < this.allProducts.length; i++) {
           this.allProducts[i].activeStar = [];
           this.allProducts[i].inActiveStar = [];
@@ -42,7 +48,7 @@ export class ProductListComponentComponent implements OnInit {
       }
     );
   }
-  applyFilter() {
+  applyFilter(): void {
     const params: any = {};
     // tslint:disable-next-line:no-unused-expression
     this.gender !== undefined ? params.gender = this.gender : null;
@@ -58,11 +64,11 @@ export class ProductListComponentComponent implements OnInit {
     this.productFilter = params;
   }
 
-  clearFilter() {
+  clearFilter(): void {
     this.productFilter = {};
   }
 
-  searchProduct(event) {
+  searchProduct(event): void {
     this.productFilter = {};
     if (event.target.value === '') {
       this.productFilter = {};
@@ -84,8 +90,75 @@ export class ProductListComponentComponent implements OnInit {
     this._route.navigate(['/details', {'id': idProduct}]);
   }
 
-  logout() {
+  logout(): void {
     localStorage.clear();
     this._route.navigate(['login']);
+  }
+
+  getMin(): number {
+    return ((this.perPage * this.page) - this.perPage) + 1;
+  }
+
+  getMax(): number {
+    let max = this.perPage * this.page;
+    if (max > this.count) {
+      max = this.count;
+    }
+    return max;
+  }
+
+  onPage(n: number): void {
+    this.page = n;
+    this.displayProductOnSpecifiedPage();
+  }
+
+  onPrev(): void {
+    this.page--;
+    this.displayProductOnSpecifiedPage();
+  }
+
+  onNext(): void {
+    this.page++;
+    this.displayProductOnSpecifiedPage();
+  }
+
+displayProductOnSpecifiedPage(): void {
+  this.productFilter = {
+    'displaySpecifiedPage': {
+      'min': this.getMin(),
+      'max': this.getMax()
+    }
+  };
+}
+
+  totalPages(): number {
+    return Math.ceil(this.count / this.perPage) || 0;
+  }
+
+  lastPage(): boolean {
+    return this.perPage * this.page > this.count;
+  }
+
+  getPages(): number[] {
+    const c = Math.ceil(this.count / this.perPage);
+    const p = this.page || 1;
+    const pagesToShow = this.pagesToShow || 9;
+    const pages: number[] = [];
+    pages.push(p);
+    const times = pagesToShow - 1;
+    for (let i = 0; i < times; i++) {
+      if (pages.length < pagesToShow) {
+        if (Math.min.apply(null, pages) > 1) {
+          pages.push(Math.min.apply(null, pages) - 1);
+        }
+      }
+      if (pages.length < pagesToShow) {
+        if (Math.max.apply(null, pages) < c) {
+          pages.push(Math.max.apply(null, pages) + 1);
+        }
+      }
+    }
+    pages.sort((a, b) => a - b);
+    return pages;
   }
 }

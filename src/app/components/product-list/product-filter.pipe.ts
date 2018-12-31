@@ -1,4 +1,4 @@
-import { PipeTransform, Pipe } from '@angular/core';
+import { PipeTransform, Pipe, ɵConsole } from '@angular/core';
 
 @Pipe({
     name: 'productFilter'
@@ -12,14 +12,14 @@ export class ProductFilterPipe implements PipeTransform {
             const filteredProduct = products.filter( (product: any) => {
                 return product.name.toLowerCase().indexOf(filter.searchProduct.toLowerCase()) !== -1;
             });
-            if (filteredProduct.length === 0) {
-                document.getElementById('emptyList').style.display = 'block';
-            } else {
-                document.getElementById('emptyList').style.display = 'none';
-            }
             return filteredProduct;
+        } else if (!!filter.displaySpecifiedPage) {
+            const max = filter.displaySpecifiedPage.max,
+            min = filter.displaySpecifiedPage.min - 1;
+            const productsOnPage = this.displayProductsOnSpecifiedPage(products, min, max);
+            return productsOnPage;
         } else {
-            return products.filter(item => {
+            const filteredProduct = products.filter(item => {
                 const notMatchingField = Object.keys(filter)
                                              .find( (key) => {
                                                  let returnKey;
@@ -40,6 +40,19 @@ export class ProductFilterPipe implements PipeTransform {
                                              });
                 return !notMatchingField;
             });
+            this.displayCaptionWhileEmptyList(filteredProduct);
+            return filteredProduct;
+
+        }}
+        displayCaptionWhileEmptyList(filteredProduct) {
+            if (filteredProduct.length === 0) {
+                document.getElementById('emptyList').style.display = 'block';
+            } else {
+                document.getElementById('emptyList').style.display = 'none';
+            }
         }
+        displayProductsOnSpecifiedPage(products, min = 0, max = 4) {
+            const productsOnPage = products.slice(min, max);
+            return productsOnPage;
         }
 }
