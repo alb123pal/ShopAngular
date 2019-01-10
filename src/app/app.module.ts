@@ -26,6 +26,7 @@ import { ButtonComponent } from './components/form-components/button/button.comp
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InputComponent } from './components/form-components/input/input.component';
+import { CheckboxGroupComponent } from './components/form-components/checkbox-group/checkbox-group.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { InputComponent } from './components/form-components/input/input.compone
     ButtonComponent,
     FooterComponent,
     HeaderComponent,
-    InputComponent
+    InputComponent,
+    CheckboxGroupComponent
   ],
   imports: [
     BrowserModule,

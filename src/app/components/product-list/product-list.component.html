@@ -22,24 +22,7 @@
                                           
                                   </div>
                                   <div>
-                                        <label class="filters-section-label">Gender</label>
-                                        <div class="gender-checkbox-edit">
-                                              <label class="label-checkbox">
-                                                      <input type="radio" name="gender" value="Man" [(ngModel)]="gender"> 
-                                                      <p>Male</p>
-                                                      <span class="checkmark"></span>
-                                              </label>
-                                              <label class="label-checkbox">
-                                                      <input type="radio" name="gender" value="Woman" [(ngModel)]="gender"> 
-                                                      <p>Female</p>
-                                                      <span class="checkmark"></span>
-                                              </label>
-                                              <label class="label-checkbox">
-                                                      <input type="radio" name="gender" value="Unisex" [(ngModel)]="gender">
-                                                      <p>Other</p>
-                                                      <span class="checkmark"></span>
-                                              </label>
-                                        </div>
+                                          <app-checkbox-group (selectedGender)="selectGender($event)"></app-checkbox-group>
                                   </div>
                           </div>
                           <div class="filters-section-upper-right">

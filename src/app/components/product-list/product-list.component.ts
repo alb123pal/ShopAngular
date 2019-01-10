@@ -80,6 +80,11 @@ export class ProductListComponentComponent implements OnInit {
     this.isHiddenFilterOptions = !this.isHiddenFilterOptions;
   }
 
+  selectGender(gender): void {
+    console.log(gender);
+    this.gender = gender;
+  }
+
   navigateToDetails(idProduct) {
     this.product = this.allProducts.filter(obj => {
       return obj.id === idProduct;

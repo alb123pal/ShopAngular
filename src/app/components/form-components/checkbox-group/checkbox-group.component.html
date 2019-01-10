@@ -1,0 +1,18 @@
+<label class="label-caption">Gender</label>
+<div class="checkbox-group">
+      <label class="label-checkbox">
+              <input type="radio" name="gender" value="Man" [(ngModel)]="gender" (ngModelChange)="onChange($event)"> 
+              <p>Male</p>
+              <span class="checkmark"></span>
+      </label>
+      <label class="label-checkbox">
+              <input type="radio" name="gender" value="Woman" [(ngModel)]="gender" (ngModelChange)="onChange($event)"> 
+              <p>Female</p>
+              <span class="checkmark"></span>
+      </label>
+      <label class="label-checkbox">
+              <input type="radio" name="gender" value="Unisex" [(ngModel)]="gender" (ngModelChange)="onChange($event)">
+              <p>Other</p>
+              <span class="checkmark"></span>
+      </label>
+</div>

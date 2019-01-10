@@ -275,67 +275,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    .gender-checkbox-edit {
-      
-      p {
-        display: inline-block;
-      }
-    
-      input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-    
-        &:checked ~ .checkmark {
-          display: inline-block;
-    
-          &::after {
-            display: block;
-          }
-        }
-      }
-    
-      .label-checkbox {
-        display: block;
-    
-        p {
-          font-weight: 300;
-          margin-top: 20px;
-          margin-left: 10px;
-          margin-right: 10px;
-        }
-      }
-    
-      .checkmark {
-        position: relative;
-        cursor: pointer;
-        border: 1px solid $green-color;
-        display: inline-block;
-        float: left;
-        top: 0;
-        left: 0;
-        display: inline-block;
-        margin-top: 13px;
-        height: 25px;
-        width: 25px;
-        background-color: $white-color;
-        border-radius: 50%;
-    
-        &::after {
-          content: '';
-          position: absolute;
-          display: none;
-          top: 2px;
-          left: 2px;
-          width: 21px;
-          height: 21px;
-          border-radius: 50%;
-          background: $green-color;
-        }
-      }
-      width: 100%;
-    }
-
     .checkbox {
       cursor: pointer;
       display: block;
