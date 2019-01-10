@@ -23,6 +23,12 @@ export class ProductListComponentComponent implements OnInit {
   priceFrom: number;
   priceTo: number;
   gender: string;
+  categoryOptions = [
+    'Wear', 'Jeans', 'Coats', 'Sweaters', 'Boats',
+  ];
+  ratingOptions = [
+    1, 2, 3, 4, 5
+  ];
 
   constructor(private _userService: UserService, private _route: Router, private _productDetails: DataService) {
   }
@@ -81,8 +87,15 @@ export class ProductListComponentComponent implements OnInit {
   }
 
   selectGender(gender): void {
-    console.log(gender);
     this.gender = gender;
+  }
+
+  selectCategory(category): void {
+    this.category = +category;
+  }
+
+  selectRating(rating): void {
+    this.rating = ++rating;
   }
 
   navigateToDetails(idProduct) {

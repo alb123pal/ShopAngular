@@ -1,0 +1,6 @@
+<label class="label">{{dropdownLabel}}</label>
+<select id="category" [(ngModel)]="category" (ngModelChange)="onChange($event)">
+        <option *ngFor="let choice of options; let i = index" value={{i}}>
+          {{choice}}
+        </option>
+</select>

@@ -27,6 +27,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InputComponent } from './components/form-components/input/input.component';
 import { CheckboxGroupComponent } from './components/form-components/checkbox-group/checkbox-group.component';
+import { DropdownComponent } from './components/form-components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CheckboxGroupComponent } from './components/form-components/checkbox-gr
     FooterComponent,
     HeaderComponent,
     InputComponent,
-    CheckboxGroupComponent
+    CheckboxGroupComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
