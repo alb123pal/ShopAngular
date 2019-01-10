@@ -8,7 +8,7 @@
                         </div>
                         <div class="filters-panel-options">
                                 <app-button (click)="showHideFilterOptions()" [class]="'button__filter-options'" [buttonCaption]="'Filter options'"></app-button>
-                                <app-input [placeholder]="'Search products'" [icon]="'search'" (searchProducts)="searchProducts($event)"></app-input>
+                                <app-input [placeholder]="'Search products'" [inputType]="'text'" [icon]="'search'" (inputEvent)="searchProducts($event)"></app-input>
                         </div>
                 </aside>
           <aside class="filters-panel-advanced" [class.filters-panel-advanced--display]="isHiddenFilterOptions">
@@ -25,21 +25,19 @@
                                   </div>
                           </div>
                           <div class="filters-section-upper-right">
-                                        <app-dropdown [dropdownLabel]="'Category'" [options]="categoryOptions" (changedDropdownModel)="selectCategory($event)"></app-dropdown>
-                                <div class="modal-edit-dropdown">
-                                        <app-dropdown [dropdownLabel]="'Rating'" [options]="ratingOptions" (changedDropdownModel)="selectRating($event)"></app-dropdown>
-                                </div>
+                                <app-dropdown [dropdownLabel]="'Category'" [options]="categoryOptions" (changedDropdownModel)="selectCategory($event)"></app-dropdown>
+                                <app-dropdown [dropdownLabel]="'Rating'" [options]="ratingOptions" (changedDropdownModel)="selectRating($event)"></app-dropdown>
                           </div>
                           <div class="filters-section-bottom-left">
                                 <div class="filters-section__input">
                                         <label class="filters-section-label filters-section-label-left">Price</label>
-                                        <input type="number" placeholder="From" min="0" [(ngModel)]="priceFrom">
-                                        <input type="number" placeholder="To" min="0" [(ngModel)]="priceTo">
+                                        <app-input [placeholder]="'From'" [class]="'input--price'" [inputType]="'number'" (inputEvent)="setMinimumPrice($event)"></app-input>
+                                        <app-input [placeholder]="'To'" [class]="'input--price'" [inputType]="'number'" (inputEvent)="setMaximumPrice($event)"></app-input>
                                 </div>
                           </div>
                           <div class="filters-section-bottom-right">
-                                <button class="button" (click)="applyFilter()">Apply</button>
-                                <button class="button" (click)="clearFilter()">Clear</button>
+                                <app-button (click)="applyFilter()" [buttonCaption]="'Apply'"></app-button>
+                                <app-button (click)="clearFilter()" [class]="'button--clear'" [buttonCaption]="'Clear'"></app-button>
                           </div>
                   </div>
           </aside>

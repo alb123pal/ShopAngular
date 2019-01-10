@@ -98,6 +98,16 @@ export class ProductListComponentComponent implements OnInit {
     this.rating = ++rating;
   }
 
+  setMinimumPrice(event): void {
+    const price = +event.target.value;
+    this.priceFrom = price;
+  }
+
+  setMaximumPrice(event): void {
+    const price = +event.target.value;
+    this.priceTo = price;
+  }
+
   navigateToDetails(idProduct) {
     this.product = this.allProducts.filter(obj => {
       return obj.id === idProduct;

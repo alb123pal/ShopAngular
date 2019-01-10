@@ -8,15 +8,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class InputComponent implements OnInit {
   @Input() placeholder: string;
   @Input() icon: string;
-  @Output() searchProducts: EventEmitter<string> = new EventEmitter<string>();
+  @Input() inputType: string;
+  @Input() class: string;
+  @Output() inputEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
 
-  emitSearchProducts(event) {
-    this.searchProducts.emit(event);
+  emitInputEvent(event) {
+    this.inputEvent.emit(event);
   }
-
 }

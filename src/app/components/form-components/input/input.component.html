@@ -1,2 +1,2 @@
-<input class="input" type="text" placeholder={{placeholder}} (input)="emitSearchProducts($event)">
-<img class="icon" src='../assets/{{icon}}.png'>
+<input class="input" [ngClass]="class" type={{inputType}} placeholder={{placeholder}} (input)="emitInputEvent($event)">
+<img *ngIf="icon" class="icon" src='../assets/{{icon}}.png'>
