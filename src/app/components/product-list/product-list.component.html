@@ -14,15 +14,11 @@
           <aside class="filters-panel-advanced" [class.filters-panel-advanced--display]="isHiddenFilterOptions">
                   <div class="filters-panel-advanced-options" >
                           <div class="filters-section-upper-left">
-                                  <div>
-                                          <label class="filters-section-label filters-section-label-left">
-                                                  <span>Available only</span>
-                                                  <input class="checkbox" type="checkbox">
-                                          </label>
-                                  </div>
-                                  <div>
-                                          <app-checkbox-group (selectedGender)="selectGender($event)"></app-checkbox-group>
-                                  </div>
+                                  <label class="filters-section-label filters-section-label-left">
+                                          <span>Available only</span>
+                                          <input class="checkbox" type="checkbox">
+                                  </label>
+                                  <app-checkbox-group (selectedGender)="selectGender($event)"></app-checkbox-group>
                           </div>
                           <div class="filters-section-upper-right">
                                 <app-dropdown [dropdownLabel]="'Category'" [options]="categoryOptions" (changedDropdownModel)="selectCategory($event)"></app-dropdown>
