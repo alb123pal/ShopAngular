@@ -11,35 +11,35 @@
                                 <app-input [placeholder]="'Search products'" [inputType]="'text'" [icon]="'search'" (inputEvent)="searchProducts($event)"></app-input>
                         </div>
                 </aside>
-          <aside class="filters-panel-advanced" [class.filters-panel-advanced--display]="isHiddenFilterOptions">
-                  <div class="filters-panel-advanced-options" >
-                          <div class="filters-section-upper-left">
-                                  <label class="filters-section-label filters-section-label-left">
-                                          <span>Available only</span>
-                                          <input class="checkbox" type="checkbox">
-                                  </label>
-                                  <app-checkbox-group (selectedGender)="selectGender($event)"></app-checkbox-group>
-                          </div>
-                          <div class="filters-section-upper-right">
-                                <app-dropdown [dropdownLabel]="'Category'" [options]="categoryOptions" (changedDropdownModel)="selectCategory($event)"></app-dropdown>
-                                <app-dropdown [dropdownLabel]="'Rating'" [options]="ratingOptions" (changedDropdownModel)="selectRating($event)"></app-dropdown>
-                          </div>
-                          <div class="filters-section-bottom-left">
-                                <div class="filters-section__input">
-                                        <label class="filters-section-label filters-section-label-left">Price</label>
-                                        <app-input [placeholder]="'From'" [class]="'input--price'" [inputType]="'number'" (inputEvent)="setMinimumPrice($event)"></app-input>
-                                        <app-input [placeholder]="'To'" [class]="'input--price'" [inputType]="'number'" (inputEvent)="setMaximumPrice($event)"></app-input>
+                <aside class="filters-panel-advanced" [class.filters-panel-advanced--display]="isHiddenFilterOptions">
+                        <div class="filters-panel-advanced-options" >
+                                 <div class="filters-section-upper-left">
+                                         <label class="filters-section-label filters-section-label-left">
+                                                 <span>Available only</span>
+                                                 <input class="checkbox" type="checkbox">
+                                        </label>
+                                        <app-checkbox-group (selectedGender)="selectGender($event)"></app-checkbox-group>
                                 </div>
-                          </div>
-                          <div class="filters-section-bottom-right">
-                                <app-button (click)="applyFilter()" [buttonCaption]="'Apply'"></app-button>
-                                <app-button (click)="clearFilter()" [class]="'button--clear'" [buttonCaption]="'Clear'"></app-button>
-                          </div>
-                  </div>
-          </aside>
-              <section id="emptyList" class="list-articles__empty-list" *ngIf="productFilter">
-                  <h1>Nie znaleziono ofert dla wprowadzonej frazy</h1>
-              </section>
+                                <div class="filters-section-upper-right">
+                                        <app-dropdown [dropdownLabel]="'Category'" [options]="categoryOptions" (changedDropdownModel)="selectCategory($event)"></app-dropdown>
+                                        <app-dropdown [dropdownLabel]="'Rating'" [options]="ratingOptions" (changedDropdownModel)="selectRating($event)"></app-dropdown>
+                                </div>
+                                <div class="filters-section-bottom-left">
+                                      <div class="filters-section__input">
+                                              <label class="filters-section-label filters-section-label-left">Price</label>
+                                              <app-input [placeholder]="'From'" [class]="'input--price'" [inputType]="'number'" (inputEvent)="setMinimumPrice($event)"></app-input>
+                                               <app-input [placeholder]="'To'" [class]="'input--price'" [inputType]="'number'" (inputEvent)="setMaximumPrice($event)"></app-input>
+                                        </div>
+                                </div>
+                                <div class="filters-section-bottom-right">
+                                        <app-button (click)="applyFilter()" [buttonCaption]="'Apply'"></app-button>
+                                        <app-button (click)="clearFilter()" [class]="'button--clear'" [buttonCaption]="'Clear'"></app-button>
+                                </div>
+                        </div>
+                </aside>
+                <section id="emptyList" class="list-articles__empty-list" *ngIf="productFilter">
+                        <h1>Nie znaleziono ofert dla wprowadzonej frazy</h1>
+                </section>
           <section class="list-articles">
                   <article *ngFor="let article of allProducts | productFilter: productFilter" class="article-item">
                         <img src={{article.image}}>
