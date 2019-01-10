@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { DataService } from '../services/product-data.service';
+import { DataService } from '../../services/product-data.service';
 
 @Component({
   selector: 'app-product-list-component',
@@ -14,7 +14,6 @@ export class ProductListComponentComponent implements OnInit {
   perPage = 4;
   pagesToShow = 3;
   isHiddenFilterOptions = false;
-  userName = '';
   isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
   allProducts;
   product: any;
@@ -29,7 +28,6 @@ export class ProductListComponentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userName = localStorage.getItem('login');
     this._userService.getProducts().subscribe(
       (res) => {
         this.allProducts = res.body;
@@ -68,7 +66,7 @@ export class ProductListComponentComponent implements OnInit {
     this.productFilter = {};
   }
 
-  searchProduct(event): void {
+  searchProducts(event): void {
     this.productFilter = {};
     if (event.target.value === '') {
       this.productFilter = {};
@@ -90,10 +88,7 @@ export class ProductListComponentComponent implements OnInit {
     this._route.navigate(['/details', {'id': idProduct}]);
   }
 
-  logout(): void {
-    localStorage.clear();
-    this._route.navigate(['login']);
-  }
+
 
   getMin(): number {
     return ((this.perPage * this.page) - this.perPage) + 1;

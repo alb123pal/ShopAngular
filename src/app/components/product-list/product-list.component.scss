@@ -1,5 +1,5 @@
-@import  '../../scss/variables.scss';
-@import  '../../scss/palette.scss';
+@import  'variables.scss';
+@import  'palette.scss';
 
 body {
   font: 100% $font-stack;
@@ -15,6 +15,11 @@ body {
     max-width: 1024px;
     padding-bottom: 10px;
   }
+}
+
+.header-component {
+  width: 100%;
+  z-index: $main-wraper-z-index;
 }
 
 .list-articles {
@@ -195,7 +200,7 @@ body {
 
   &-options {
     margin-top: 25px;
-    width: 400px;
+    width: 405px;
 
     .button {
       border: none;
@@ -370,20 +375,7 @@ body {
 .add-products {
   margin-left: 25px;
   margin-top: 25px;
-
-  &__button {
-    border: none;
-    border-radius: 10px;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
-    height: 40px;
-    margin-right: 10px;
-    width: 150px;
-    background: -webkit-linear-gradient(bottom, #0052cc, #5eaece);
-  }
+  display: flex;
 }
 
 .modal-edit-dropdown {
@@ -467,9 +459,7 @@ body {
     &.disabled {
       background: -webkit-linear-gradient(top, #b0b0b0, #7b7b7b);
     }
-
   }
-
 
   &__description {
     color: $white-color;

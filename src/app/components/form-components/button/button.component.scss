@@ -1,0 +1,29 @@
+@import 'palette.scss';
+@import 'variables.scss';
+
+.button {
+    border: none;
+    border-radius: 10px;
+    clear: right;
+    color: $white-color;
+    float: right;
+    font-size: 12px;
+    font-weight: 700;
+    height: 40px;
+    width: $button-width;
+    background: -webkit-linear-gradient(bottom, #007d68, #00bcc0);
+
+    &__filter-options {
+        float: none;
+        margin-right: 15px;
+    }
+
+    &--blue {
+        background: -webkit-linear-gradient(bottom, #0052cc, #5eaece);
+        width: 150px;
+    }
+
+    &:disabled {
+        background: -webkit-linear-gradient(top, #b0b0b0, #7b7b7b);
+    }
+}

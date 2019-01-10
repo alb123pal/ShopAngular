@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,31 +8,63 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-shop.component.scss']
 })
 export class LoginShopComponentComponent implements OnInit {
-  @Input() login: string;
-  @Input() password: string;
+  private _login: string;
+  private _password: string;
+  private _validInputModel: Object;
   message = '';
+  isError = true;
+
   constructor(private _userService: UserService, private _router: Router) { }
 
   ngOnInit() {
+    this._validInputModel = {
+      validLogin: false,
+      validPassword: false
+    };
   }
 
-  loginUser() {
-    this._userService.authorizationUser(this.login, this.password).subscribe(
+  setLogin(login: Object): void {
+    this._login = login['value'];
+    this._validInputModel['validLogin'] = login['valid'];
+    this.checkIsError();
+  }
+
+  setPassword(password: Object): void {
+    this._password = password['value'];
+    this._validInputModel['validPassword'] = password['valid'];
+    this.checkIsError();
+  }
+
+  checkIsError(): void {
+    const isValidCredentials = this._validInputModel['validPassword'] && this._validInputModel['validLogin'];
+    if (isValidCredentials) {
+      this.isError = false;
+    } else {
+      this.isError = true;
+    }
+  }
+
+  authorizeUser() {
+    this._userService.authorizeUser(this._login, this._password).subscribe(
       (res) => {
-        let isUser;
         const sessionToken = res.headers.get('session-token');
+
         localStorage.setItem('sessionToken', sessionToken);
         localStorage.setItem('isAuth', 'true');
+
         this._userService.getUsers().subscribe(
           (responseRole) => {
-            const loggedUser = this.verificationUser(responseRole);
+            let isUser;
+            const loggedUser = this.verifyUser(responseRole.body);
             localStorage.setItem('login', loggedUser.login);
             isUser = loggedUser.roleId;
+
             if (isUser) {
               localStorage.setItem('isAdmin', 'false');
             } else {
               localStorage.setItem('isAdmin', 'true');
             }
+
             this._router.navigate(['lists']);
           }
         );
@@ -43,14 +75,14 @@ export class LoginShopComponentComponent implements OnInit {
     );
   }
 
-  verificationUser(responseRole) {
+  verifyUser(allUsers) {
     const login = localStorage.getItem('login');
-    let user;
-    responseRole.body.find( obj => {
-      if (obj.login === login) {
-        user = obj;
+    let loggedUser;
+    allUsers.find( user => {
+      if (user.login === login) {
+        loggedUser = user;
       }
     });
-    return user;
+    return loggedUser;
   }
 }

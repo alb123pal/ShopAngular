@@ -1,40 +1,20 @@
-<main class="page-wrapper-content">
+<main class="page-wrapper-content" >
   <div class="login-modal-wrapper">
-      
       <section class="login-modal">
           <div class="login-modal__title">
               <h2>Login to 'Demo Shop'</h2>                                                
           </div>
-          <div class="login-modal__content">
+          <div class="login-modal__content" (inputLoginValue)="setLogin($event)">
               <div class="login-modal-info" [class.login-modal-info--error]="message">
                   <h2>{{message}}</h2>
               </div>
-              <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
-                  <div class="login-modal__input-panel" [class.has-error]="loginInput.invalid && loginInput.touched">
-                      <p>Your login:</p>
-                      <input id="login" [(ngModel)]="login" type="text" name="login" #loginInput="ngModel" minlength="3" pattern="[a-zA-Z]+" required>
-                      <img src="../assets/login-inactive.svg" alt="login" >
-                      <div *ngIf="loginInput.invalid && (loginInput.dirty || loginInput.touched)"
-                           class="login-modal__input-panel--error">
-                        <span *ngIf="loginInput.errors.minlength">Minimalna długość loginu to 3 znaki</span>
-                        <span *ngIf="loginInput.errors.pattern">Wprowadzono nieprawidłowe znaki</span>
-                        <span *ngIf="loginInput.errors.required">Wymagany login</span>
-                      </div>
-                  </div>
-                  
-                  <div class="login-modal__input-panel" [class.has-error]="passwordInput.invalid && passwordInput.touched">
-                      <p>Your password:</p>
-                      <input minlength="3" id="password" [(ngModel)]="password" type="password" name="password" [(ngModel)]="password" #passwordInput="ngModel" required>
-                      <img src="../assets/password-inactive.svg" alt="password">
-                      <div *ngIf="passwordInput.invalid && (passwordInput.touched || passwordInput.dirty)"
-                            class="login-modal__input-panel--error">
-                            <span *ngIf="passwordInput?.errors">Wprowadzono nie prawidłowe hasło</span>
-                      </div>
-                  </div>
-                  <button [disabled]="loginForm.invalid" type="submit" class="login-modal__submit-button">Submit</button>
+              <form #loginForm="ngForm" (ngSubmit)="authorizeUser()">
+                  <app-input-login [field]="'login'" (inputLoginValue)="setLogin($event)"></app-input-login>
+                  <app-input-password [field]="'password'" (inputPasswordValue)="setPassword($event)"></app-input-password>
+                  <app-button [buttonCaption]="'Submit'" [isDisabled]="isError"></app-button>
               </form>
           </div>
       </section>
   </div>
 </main>
-<footer class="footer">Copyright 2017!!</footer>
+<app-footer></app-footer>

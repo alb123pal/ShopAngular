@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './components/services/interceptor.service';
+import { TokenInterceptor } from './services/interceptor.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,11 +15,17 @@ import { ProductDetailsComponentComponent } from './components/product-details/p
 import { ErrorPageComponentComponent } from './components/error-page/error-page.component';
 import { ErrorServerComponentComponent } from './components/error-server/error-server.component';
 
-import { UserService } from './components/services/user.service';
-import { ProductListCainActivateGuard } from './components/services/product-list-can-activate-guard';
-import { DataService } from './components/services/product-data.service';
-import { LoginCanActivateGuard } from './components/services/login-can-activate-guard';
-import { ProductDeatilsCainActivateGuard } from './components/services/product-details-can-activate-guard';
+import { UserService } from './services/user.service';
+import { ProductListCainActivateGuard } from './services/product-list-can-activate-guard';
+import { DataService } from './services/product-data.service';
+import { LoginCanActivateGuard } from './services/login-can-activate-guard';
+import { ProductDeatilsCainActivateGuard } from './services/product-details-can-activate-guard';
+import { InputFormComponent } from './components/form-components/input-login/input-login.component';
+import { InputPasswordComponent } from './components/form-components/input-password/input-password.component';
+import { ButtonComponent } from './components/form-components/button/button.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { InputComponent } from './components/form-components/input/input.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,13 @@ import { ProductDeatilsCainActivateGuard } from './components/services/product-d
     ProductDetailsComponentComponent,
     ErrorPageComponentComponent,
     ErrorServerComponentComponent,
-    ProductFilterPipe
+    ProductFilterPipe,
+    InputFormComponent,
+    InputPasswordComponent,
+    ButtonComponent,
+    FooterComponent,
+    HeaderComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,

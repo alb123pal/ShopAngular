@@ -1,0 +1,11 @@
+<div class="login-modal__input-panel" [class.has-error]="loginInput.invalid && loginInput.touched">
+  <p>Your {{field}}:</p>
+  <input id="login" [(ngModel)]="login" type="text" name="login" #loginInput="ngModel" minlength="3" pattern="[a-zA-Z]+" required>
+  <img src="../assets/{{field}}-inactive.svg" alt="login" >
+  <div *ngIf="loginInput.invalid && (loginInput.dirty || loginInput.touched)"
+       class="login-modal__input-panel--error">
+    <span *ngIf="loginInput.errors.minlength">Minimalna długość loginu to 3 znaki</span>
+    <span *ngIf="loginInput.errors.pattern">Wprowadzono nieprawidłowe znaki</span>
+    <span *ngIf="loginInput.errors.required">Wymagany login</span>
+  </div>
+</div>

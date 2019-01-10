@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginShopComponentComponent } from './login-shop.component';
 import {DebugElement, inject} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -54,7 +54,7 @@ describe('LoginShopComponentComponent', () => {
   });
 
   it('user authorize with token', () => {
-    userService.authorizationUser('stan', 'stan123');
+    userService.authorizeUser('stan', 'stan123');
     const token = localStorage.getItem('login');
     expect(token).not.toBeNull();
   });

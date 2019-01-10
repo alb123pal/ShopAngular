@@ -1,25 +1,16 @@
 <main class="page-wrapper">
-  <div class="page-wrapper-grey"></div>
-  <header class="header">
-                <div class="header-panel">
-                    <span class="header-shop">Logo</span>
-                    <div class="header-panel-right">
-                        <span class="header-name">Hello {{userName}}</span>
-                        <span class="header-logout" (click)="logout()">Logout</span>
-                    </div>
-                </div>
-            </header>
-          <div class="page-wrapper-content">
-          <aside class="filters-panel">
-                  <div class="add-products">
-                          <button [hidden]="!isAdmin" class="add-products__button">Add products</button>
-                  </div>
-                  <div class="filters-panel-options">
-                          <button class="button" (click)="showHideFilterOptions()">Filter options</button>
-                          <input class="input" type="text" name="filter" placeholder="Search product" (input)="searchProduct($event)">
-                          <img class="icon-search" src='../assets/search.png'>
-                  </div>
-          </aside>
+        <div class="page-wrapper-grey"></div>
+        <app-header class="header-component"></app-header>
+        <div class="page-wrapper-content">
+                <aside class="filters-panel">
+                        <div class="add-products" [hidden]="!isAdmin">
+                                <app-button [class]="'button--blue'" [buttonCaption]="'Add products'"></app-button>
+                        </div>
+                        <div class="filters-panel-options">
+                                <app-button (click)="showHideFilterOptions()" [class]="'button__filter-options'" [buttonCaption]="'Filter options'"></app-button>
+                                <app-input [placeholder]="'Search products'" [icon]="'search'" (searchProducts)="searchProducts($event)"></app-input>
+                        </div>
+                </aside>
           <aside class="filters-panel-advanced" [class.filters-panel-advanced--display]="isHiddenFilterOptions">
                   <div class="filters-panel-advanced-options" >
                           <div class="filters-section-upper-left">
@@ -125,5 +116,5 @@
                         </div>
               </section>
   </div>
-  <footer class="footer">Copyright 2017!!</footer>
+  <app-footer></app-footer>
 </main>

@@ -1,24 +1,5 @@
-@import  'variables.scss';
-@import  'palette.scss';
-
-body {
-    font: 100% $font-stack;
-    color: $primary-color;
-    margin: 0;
-  }
-
-.page-wrapper-content {
-    grid-template-columns: 1fr;
-    height: 92%;
-}
-
-.login-modal-wrapper {
-    display: grid;
-    margin:5px;
-    justify-content: center;
-    align-items: center;
-    z-index: $modal-z-index;
-}
+@import  'variables';
+@import  'palette';
 
 .login-modal {
     display: grid;
@@ -49,8 +30,6 @@ body {
         }
     }
 
-
-
     &-info {
         position: relative;
         bottom: 12px;
@@ -65,12 +44,30 @@ body {
     }
 }
 
-.login-modal__content {
-    background: url('/assets/modal-bg.png') $grey-color;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 25px;
-    
+.login-modal__input-panel {
+    margin-bottom: 20px;
+
+    &.has-error {
+        input {
+            color: $error-color;
+            border: 2px solid $error-color;
+        }
+    }    
+
+    img {
+        float: right;
+        position: relative;
+        right: 15px;
+        top: -33px;
+    }
+
+    &--error {
+        font-size: 10px;
+        color: $error-color;
+        margin-top: 4px;
+        position: absolute;
+    }
+
     p {
         font-size: 14px;
         margin: 0px 0px 7px;;
@@ -88,10 +85,6 @@ body {
         &:focus {
             border: 2px solid #92c4bc;
             outline: none;
-        }
-
-       
+        }       
     }
 }
-
-

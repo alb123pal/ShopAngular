@@ -1,0 +1,15 @@
+@import 'palette.scss';
+@import 'variables.scss';
+
+.footer {
+    background-color: $green-color;
+    border: 1px solid #89c6af;
+    box-sizing: border-box;
+    color: $white-color;
+    height: 50px;
+    margin-top: 10px;
+    padding-top: 15px;
+    width: 100%;
+    text-align: center;
+    z-index: $main-wraper-z-index;
+  }

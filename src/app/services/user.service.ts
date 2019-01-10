@@ -12,7 +12,7 @@ export class UserService {
         return ['stasiek', 'franek'];
     }
 
-    authorizationUser(login: string, password: string) {
+    authorizeUser(login: string, password: string) {
         const params = {
             login: login,
             password: password

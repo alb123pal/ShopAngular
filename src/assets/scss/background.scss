@@ -54,58 +54,6 @@ body {
   }
 }
 
-.header {
-  background-color: $green-color;
-  border: 1px solid #89c6af;
-  box-sizing: border-box;
-  color: $white-color;
-  height: 50px;
-  width: 100%;
-
-  z-index: $main-wraper-z-index;
-  .header-panel {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 1024px;
-    margin: 0 auto;
-    width: 100%;
-
-    .header-name {
-      font-style: italic;
-      margin: 15px 30px;
-    }
-
-    .header-shop {
-      background: url('/assets/shop.png');
-      margin: 15px 30px;
-    }
-
-    .header-logout {
-      color: $white-color;
-      cursor: pointer;
-      margin: 15px 30px;
-    }
-
-    &-right {
-      display: flex;
-      justify-content: flex-end;
-    }
-  }
-}
-
-.footer {
-  background-color: $green-color;
-  border: 1px solid #89c6af;
-  box-sizing: border-box;
-  color: $white-color;
-  height: 50px;
-  margin-top: 10px;
-  padding-top: 15px;
-  width: 100%;
-  text-align: center;
-  z-index: $main-wraper-z-index;
-}
-
 .error {
 
   .page-wrapper-grey {
