@@ -40,28 +40,10 @@
                 <section id="emptyList" class="list-articles__empty-list" *ngIf="productFilter">
                         <h1>Nie znaleziono ofert dla wprowadzonej frazy</h1>
                 </section>
-          <section class="list-articles">
-                  <article *ngFor="let article of allProducts | productFilter: productFilter" class="article-item">
-                        <img src={{article.image}}>
-                        <div class="panel-stars">
-                                <span class="star star--active" *ngFor="let activeStar of article.activeStar"></span>
-                                <span class="star star--inactive" *ngFor="let activeStar of article.inActiveStar"></span>
-                        </div>
-                        <div class="article-item__content">
-                                <h2>{{article.name}}</h2>
-                                <hr />
-                                <div class="article-item__vertical-text-overflow">
-                                        <p>{{article.description}}</p>
-                                </div>
-                                <div class="article-item__content-info">
-                                        <span class="item-prize"><span class="item-prize--currency">$</span>{{article.cost}}</span>
-                                        <button [hidden]="!isAdmin" class="button">Delete products</button>  
-                                        <button class="button" (click)="navigateToDetails(article.id)">Show more</button>  
-                                </div>
-                        </div>
-                  </article>
-          </section>
-          <section class="pagination">
+                <section class="list-articles">
+                      <app-product-item *ngFor="let product of allProducts | productFilter: productFilter" [product]="product"></app-product-item>
+                </section>
+                <section class="pagination">
                         <div class="numbers">
                                 <button class="link button" (click)="onPrev()" [disabled]="page === 1" [ngClass]="{ 'disabled': page === 1 }">Previous</button>
                                 <button
@@ -76,5 +58,5 @@
                         </div>
               </section>
   </div>
-  <app-footer></app-footer>
+  <app-footer class="footer"></app-footer>
 </main>

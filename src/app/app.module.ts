@@ -28,6 +28,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { InputComponent } from './components/form-components/input/input.component';
 import { CheckboxGroupComponent } from './components/form-components/checkbox-group/checkbox-group.component';
 import { DropdownComponent } from './components/form-components/dropdown/dropdown.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { DropdownComponent } from './components/form-components/dropdown/dropdow
     HeaderComponent,
     InputComponent,
     CheckboxGroupComponent,
-    DropdownComponent
+    DropdownComponent,
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,
