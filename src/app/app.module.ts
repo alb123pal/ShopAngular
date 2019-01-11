@@ -29,6 +29,7 @@ import { InputComponent } from './components/form-components/input/input.compone
 import { CheckboxGroupComponent } from './components/form-components/checkbox-group/checkbox-group.component';
 import { DropdownComponent } from './components/form-components/dropdown/dropdown.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ProductItemComponent } from './components/product-item/product-item.com
     InputComponent,
     CheckboxGroupComponent,
     DropdownComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

@@ -44,6 +44,7 @@
                       <app-product-item *ngFor="let product of allProducts | productFilter: productFilter" [product]="product"></app-product-item>
                 </section>
                 <section class="pagination">
+                        <app-pagination (productOnSpecifiedPage)="displayProductOnSpecifiedPage($event)"></app-pagination>
                         <div class="numbers">
                                 <button class="link button" (click)="onPrev()" [disabled]="page === 1" [ngClass]="{ 'disabled': page === 1 }">Previous</button>
                                 <button

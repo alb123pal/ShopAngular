@@ -1,0 +1,12 @@
+<div class="numbers">
+    <button class="link button" (click)="onPrev()" [disabled]="page === 1" [ngClass]="{ 'disabled': page === 1 }">Previous</button>
+    <button
+            *ngFor="let pageNum of getPages()"
+            (click)="onPage(pageNum)"
+            class="pagination__page-num"
+            [ngClass]="{'active': pageNum === page}">{{ pageNum }}</button>
+    <button class="link button" (click)="onNext(true)" [disabled]="lastPage()" [ngClass]="{ 'disabled': lastPage() }">Next</button>
+</div>
+<div class="pagination__description">
+    <span class="page-counts">{{ getMin() }} - {{ getMax() }} of {{ count }}</span>
+</div>
