@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +8,13 @@ import { Router } from '@angular/router';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: Object;
-  constructor(private _route: Router) { }
+  @Output() sendIdProduct: EventEmitter<number> = new EventEmitter<number>();
+  constructor(private _router: Router) { }
 
   ngOnInit() {
   }
 
-  navigateToDetails(idProduct) {
-    this._route.navigate(['/details', {'id': idProduct}]);
+  navigateToDetails(idProduct: number) {
+    this.sendIdProduct.emit(idProduct);
   }
 }
