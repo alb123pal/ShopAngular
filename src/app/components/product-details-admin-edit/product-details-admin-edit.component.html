@@ -1,0 +1,38 @@
+<div class="modal-items-background"></div>
+<div class="modal-item-edit">
+        <div class="modal-item-delete__title">
+                <p>Edit: "Lorem ipsum dolor sit amet, connim veniam."</p>
+       </div>
+       <div class="modal-item-edit__content">
+               <div class="modal-item-left">
+                       <div class="modal-edit-input">
+                               <p>Name:</p>
+                               <app-input placeholder="name"></app-input>
+                       </div>
+                       <app-dropdown [dropdownLabel]="'Category'" [options]="categoryOptions" (changedDropdownModel)="selectCategory($event)"></app-dropdown>
+                       <app-checkbox-group [composition]="'horizontal-group'" (selectedGender)="selectGender($event)"></app-checkbox-group>
+                       <div class="modal-edit-dropdown">
+                               <p>Description:</p>
+                               <textarea rows="20" cols="40" name="comment" placeholder="Enter a text here"></textarea>
+                       </div>
+               </div>
+               <div class="modal-item-right">
+                       <div class="modal-edit-link">
+                               <p>Link to image:</p>
+                               <app-input placeholder="https://"></app-input>
+                       </div>
+                       <img class="" src="../assets/items/2.jpg" />
+                       <div>
+                               <label>Price:
+                                       <span class="modal-item-edit__currency">$</span>
+                               </label>
+                               <app-input placeholder="Please enter a price" [inputType]="'number'"></app-input>
+                       </div>
+                       <app-dropdown [dropdownLabel]="'Rating'" [options]="ratingOptions" (changedDropdownModel)="selectRating($event)"></app-dropdown>
+               </div>
+               <div class="modal-item-panel-button">
+                  <app-button class="vertical-location" [buttonCaption]="'Cancel'" [class]="'button--grey'"  (click)="changeDisplayModal()"></app-button>
+                  <app-button class="vertical-location" [buttonCaption]="'Submit'" (click)="changeDisplayModal()"></app-button>
+               </div>
+       </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-checkbox-group',
@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CheckboxGroupComponent implements OnInit {
   private gender = '';
+  @Input() composition: string;
   @Output() selectedGender: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }

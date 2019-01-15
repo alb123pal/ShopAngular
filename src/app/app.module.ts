@@ -30,6 +30,7 @@ import { CheckboxGroupComponent } from './components/form-components/checkbox-gr
 import { DropdownComponent } from './components/form-components/dropdown/dropdown.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { ProductDetailsAdminEditComponent } from './components/product-details-admin-edit/product-details-admin-edit.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     CheckboxGroupComponent,
     DropdownComponent,
     ProductItemComponent,
-    PaginationComponent
+    PaginationComponent,
+    ProductDetailsAdminEditComponent
   ],
   imports: [
     BrowserModule,

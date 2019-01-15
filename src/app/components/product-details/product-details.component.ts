@@ -12,20 +12,17 @@ export class ProductDetailsComponentComponent implements OnInit {
 
 
   userName = '';
-  product;
+  product: any;
   isOpenEditModal = false;
   isAdmin: string;
   private _id: number;
+
   constructor(private _route: ActivatedRoute, private _productDetails: DataService) { }
 
   ngOnInit() {
-    this.isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
+    this.isAdmin = JSON.parse(localStorage.getItem('isAdmin')) || true;
     this.userName = localStorage.getItem('login');
     this._id = +this._route.snapshot.paramMap.get('id');
     this._productDetails.currentProduct.subscribe(product => this.product = product);
-  }
-
-  changeDisplayModal() {
-    this.isOpenEditModal = !this.isOpenEditModal;
   }
 }

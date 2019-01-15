@@ -1,0 +1,143 @@
+@import 'variables.scss';
+@import  'palette.scss';
+
+.modal-item-edit {
+    grid-template-rows: 44px 1fr;
+    grid-template-columns: auto;
+    position: absolute;
+    max-width: 600px;
+    top: 15px;
+    z-index: $modal-z-index;
+    
+    &__title {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  
+    &__content {
+      background: url(/assets/modal-bg.png) grey;
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: 1fr;
+      padding: 15px;
+      border-bottom-right-radius: 25px;
+      border-bottom-left-radius: 25px;
+  
+      @media (min-width: 600px) {
+        grid-template-columns: 1fr 1fr;
+      }
+  
+      label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+      }
+  
+      img {
+        height: 300px;
+        width: 100%;
+      }
+  
+      p {
+        font-size: 12px;
+        font-weight: 700;
+        margin: 0 0 4px 0;
+      }
+  
+      input {
+        border: none;
+        border-radius: 10px;
+        box-sizing: border-box;
+        font-size: 14px;
+        height: 30px;
+        margin: 10px 0;
+        padding-left: 10px;
+        width: 100%;
+  
+        &:focus {
+            border: 2px solid #92c4bc;
+            outline: none;
+        }
+  
+        &:invalid {
+            color: $error-color;
+            border: 2px solid $error-color;
+        }
+      }
+    }
+  
+    &__currency {
+      float: right;
+      font-size: 14px;
+      top: 27px;
+      left: 2;
+      position: relative;
+    }
+  }
+
+  .modal-item-delete {
+    display: none;
+    grid-template-rows: 44px 220px;
+    grid-template-columns: 420px;
+    max-width: 600px;
+    z-index: $modal-z-index;
+  
+    &__title {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  
+    &__content {
+      background: url(/assets/modal-bg.png) grey;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      padding: 25px;
+    }
+}
+
+.modal-items {
+    display: none;
+    height: 100%;
+    left: 0;
+    margin: 0 auto;
+    position: fixed;
+    right: 0;
+  
+    &-background {
+      background-color: $dark-color;
+      height: 100%;
+      left: 0;
+      margin: 0 auto;
+      opacity: 0.4;
+      position: fixed;
+      width: 100%;
+    }
+  
+    &-wrapper {
+      display: grid;
+      width: 100%;
+      grid-template-columns: 1fr;
+      height: 100%;
+      overflow: scroll;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+    }
+  }
+
+.modal-item-panel-button {
+  grid-column: 2;
+  justify-content: flex-end;
+  display: flex;
+  
+  .vertical-location {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}

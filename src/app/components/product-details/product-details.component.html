@@ -1,117 +1,36 @@
 <main class="page-wrapper">
   <div class="page-wrapper-grey"></div>
-  <header class="header">
-                <div class="header-panel">
-                    <span class="header-shop">Logo</span>
-                    <div class="header-panel-right">
-                        <span class="header-name">Hello {{userName}}</span>
-                        <span class="header-logout" (click)="logout()">Logout</span>
-                    </div>
-                </div>
-            </header>
-            <main class="page-wrapper-content">
-              <section class="product-wrapper">
-                      <article class="article-item">
-                              <aside class="article-item-left">
-                                      <img src={{product[0].image}}>
-                                      <div class="panel-stars">
-                                        <span class="star star--active" *ngFor="let activeStar of product[0].activeStar"></span>
-                                        <span class="star star--inactive" *ngFor="let inActiveStar of product[0].inActiveStar"></span>
-                                      </div>
-                              </aside>
-                              <div class="article-item__content">
-                                      <h2>{{product[0].name}}</h2>
-                                      <hr />
-                                      <p>{{product[0].description}}</p>
-                                      <div class="additional-panel">
-                                        <span class="additional-panel__gender">{{product[0].gender}}</span>
-                                        <button [hidden]="!isAdmin" class="additional-panel__edit" (click)="changeDisplayModal()">Edit</button>
-                                      </div>
-                                      <hr />
-                                      <div class="article-item__content-info">
-                                              <span class="item-prize"><span class="item-prize--currency">$</span>{{product[0].cost}}</span>
-                                              <span>({{product[0].count - product[0].soldCount}} times left)</span>
-                                              <button [disabled]="product[0].count - product[0].soldCount == 0" class="button">Buy</button>
-                                      </div>
-                              </div>
-                              <div class="modal-item-wrapper" [class.modal-item-wrapper-display]="isOpenEditModal">
-                                        <div class="modal-items-background"></div>
-                                        <div class="modal-item-edit">
-                                                        <div class="modal-item-delete__title">
-                                                                <p>Edit: "Lorem ipsum dolor sit amet, connim veniam."</p>
-                                                         </div>
-                                                         <div class="modal-item-edit__content">
-                                                                <div class="modal-item-left">
-                                                                        <div class="modal-edit-input">
-                                                                                 <p>Name:</p>
-                                                                                 <input type="text" name="name">
-                                                                        </div>
-                                                                        <div class="modal-edit-dropdown">
-                                                                                <label>Category:</label>
-                                                                                 <select>
-                                                                                         <option value="wear">Wear</option>
-                                                                                         <option value="jeans">Jeans</option>
-                                                                                         <option value="boats">Boats</option>
-                                                                                 </select>
-                                                                        </div>
-                                                                        <div class="gender-checkbox-edit">
-                                                                                 <label>Gender:</label>
-                                                                                 <label class="label-checkbox">
-                                                                                         <input type="radio" name="gender" value="male"> 
-                                                                                         <p>Male</p>
-                                                                                         <span class="checkmark"></span>
-                                                                                 </label>
-                                                                                 <label class="label-checkbox">
-                                                                                         <input type="radio" name="gender" value="female"> 
-                                                                                         <p>Female</p>
-                                                                                         <span class="checkmark"></span>
-                                                                                 </label>
-                                                                                 <label class="label-checkbox">
-                                                                                         <input type="radio" name="gender" value="other">
-                                                                                         <p>Other</p>
-                                                                                         <span class="checkmark"></span>
-                                                                                 </label>
-                                                                         </div>
-                                                                         <div class="modal-edit-dropdown">
-                                                                                 <p>Description:</p>
-                                                                                 <textarea rows="20" cols="40" name="comment" placeholder="Enter a text here"></textarea>
-                                                                         </div>
-                                                                </div>
-                                                                <div class="modal-item-right">
-                                                                         <div class="modal-edit-link">
-                                                                                 <p>Link to image:</p>
-                                                                                 <input type="text" name="image" placeholder="https://">
-                                                                         </div>
-                                                                         <img class="" src="../assets/items/2.jpg" />
-                                                                         <div>
-                                                                                 <label>Price:
-                                                                                         <span class="modal-item-edit__currency">$</span>
-                                                                                 </label>
-                                                                                 <input type="number" placeholder="Please enter a price" min="0">
-                                                                         </div>
-                                                                         <div class="modal-edit-dropdown">
-                                                                                 <label>Rating:</label>
-                                                                                 <select>
-                                                                                         <option value="1">1</option>
-                                                                                         <option value="2">2</option>
-                                                                                         <option value="3">3</option>
-                                                                                         <option value="4">4</option>
-                                                                                         <option value="5">5</option>
-                                                                                 </select>
-                                                                         </div>
-                                                                 </div>
-                                                        </div>
-                                                        <footer class="modal-item-edit__footer">
-                                                                 <div class="modal-item-panel-button">
-                                                                         <button class="button button__cancel"  (click)="changeDisplayModal()">Cancel</button>
-                                                                         <button class="button button__submit"  (click)="changeDisplayModal()">Submit</button>
-                                                                 </div>
-                                                         </footer>
-                                        </div>
-                              </div>
-                              
-                      </article>
-              </section>
-      </main>
-  <footer class="footer">Copyright 2017!!</footer>
+  <app-header class="header-component"></app-header>
+  <main class="page-wrapper-content">
+          <section class="product-wrapper">
+                  <article class="article-item">
+                          <aside class="article-item-left">
+                                  <img src={{product[0].image}}>
+                                  <div class="panel-stars">
+                                          <span class="star star--active" *ngFor="let activeStar of product[0].activeStar"></span>
+                                          <span class="star star--inactive" *ngFor="let inActiveStar of product[0].inActiveStar"></span>
+                                  </div>
+                         </aside>
+                         <div class="article-item__content">
+                                 <h2>{{product[0].name}}</h2>
+                                 <hr />
+                                 <p>{{product[0].description}}</p>
+                                 <div class="additional-panel">
+                                         <span class="additional-panel__gender">{{product[0].gender}}</span>
+                                         <app-button [isHidden]="!isAdmin"  [class]="'button--blue'" (click)="isOpenEditModal = true" [buttonCaption]="'Edit'"></app-button>
+                                </div>
+                                <hr />
+                                <div class="article-item__content-info">
+                                        <span class="item-prize"><span class="item-prize--currency">$</span>{{product[0].cost}}</span>
+                                        <span>({{product[0].count - product[0].soldCount}} times left)</span>
+                                        <app-button [isDisabled]="product[0].count - product[0].soldCount == 0" [buttonCaption]="'Buy'"></app-button>
+                                </div>
+                         </div>
+                         <div class="modal-item-wrapper" [class.modal-item-wrapper-display]="isOpenEditModal">
+                                 <app-product-details-admin-edit (cancelModalEvent)="isOpenEditModal = !isOpenEditModal"></app-product-details-admin-edit>
+                        </div>
+                </article>
+        </section>
+        </main>
+        <app-footer class="footer-component"></app-footer>
 </main>

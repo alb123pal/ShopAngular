@@ -8,6 +8,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 export class ButtonComponent implements OnInit {
   @Input() buttonCaption: string;
   @Input() isDisabled: boolean;
+  @Input() isHidden: boolean;
   @Input() class: string;
   @ViewChild('loginInput') loginInputRef: ElementRef;
 

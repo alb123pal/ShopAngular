@@ -1,5 +1,5 @@
 <label class="label-caption">Gender</label>
-<div class="checkbox-group">
+<div class="checkbox-group" [ngClass]="composition">
       <label class="label-checkbox">
               <input type="radio" name="gender" value="Man" [(ngModel)]="gender" (ngModelChange)="onChange($event)"> 
               <p>Male</p>
