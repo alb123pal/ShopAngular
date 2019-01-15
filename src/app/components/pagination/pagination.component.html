@@ -1,4 +1,4 @@
-<div class="numbers">
+<div class="pagination">
     <button class="link button" (click)="onPrev()" [disabled]="page === 1" [ngClass]="{ 'disabled': page === 1 }">Previous</button>
     <button
             *ngFor="let pageNum of getPages()"

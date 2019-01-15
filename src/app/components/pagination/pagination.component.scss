@@ -1,0 +1,46 @@
+@import 'variables.scss';
+@import 'palette.scss';
+
+.pagination {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+
+    &__page-num {
+      height: 27px;
+      width: 27px;
+      padding: 6px;
+      margin: 0 1px;
+      min-width: 18px;
+      border: none;
+      text-align: center;
+  
+      &.active {
+        background: #0098d0;
+        color: #fff;    }
+    }
+  
+    .link {
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      height: 40px;
+      width: 115px;
+      background: -webkit-linear-gradient(bottom, #0052cc, #5eaece);
+      margin-left: 25px;
+      margin-right: 25px;
+  
+      &.disabled {
+        background: -webkit-linear-gradient(top, #b0b0b0, #7b7b7b);
+      }
+    }
+  
+    &__description {
+      color: $white-color;
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+    }
+  }

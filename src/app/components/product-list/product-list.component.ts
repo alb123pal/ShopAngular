@@ -33,6 +33,10 @@ export class ProductListComponentComponent implements OnInit {
   ngOnInit() {
     this._userService.getProducts().subscribe(
       (res) => {
+        const firstPage = {
+          'min': 1,
+          'max': 4
+        };
         this.allProducts = res.body;
         for (let i = 0; i < this.allProducts.length; i++) {
           this.allProducts[i].activeStar = [];
@@ -44,6 +48,7 @@ export class ProductListComponentComponent implements OnInit {
             this.allProducts[i].inActiveStar.push('1');
           }
         }
+        this.displayProductOnSpecifiedPage(firstPage);
       }
     );
   }
@@ -110,6 +115,7 @@ export class ProductListComponentComponent implements OnInit {
     this._productDetails.changeProduct(this.product);
     this._route.navigate(['/details', {'id': idProduct}]);
   }
+
   displayProductOnSpecifiedPage(specifiedProducts): void {
     this.productFilter = {
       'displaySpecifiedPage': specifiedProducts

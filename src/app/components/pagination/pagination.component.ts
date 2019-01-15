@@ -10,11 +10,10 @@ export class PaginationComponent implements OnInit {
   count = 25;
   perPage = 4;
   pagesToShow = 3;
-  @Output() productOnSpecifiedPage: EventEmitter<Object> = new EventEmitter<Object>;
+  @Output() productOnSpecifiedPage: EventEmitter<Object> = new EventEmitter<Object>();
   constructor() { }
 
   ngOnInit() {
-    this.displayProductOnSpecifiedPage();
   }
 
   getMin(): number {
@@ -50,7 +49,6 @@ displayProductOnSpecifiedPage(): void {
     'max': this.getMax()
   };
   this.productOnSpecifiedPage.emit(productsOnSpecifiedPage);
-
 }
 
   totalPages(): number {
