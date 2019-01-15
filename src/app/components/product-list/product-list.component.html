@@ -43,9 +43,9 @@
                 <section class="list-articles">
                       <app-product-item *ngFor="let product of allProducts | productFilter: productFilter" [product]="product" (sendIdProduct)="navigateToDetails($event)"></app-product-item>
                 </section>
-                <section class="pagination">
+                <section class="pagination" *ngIf="!isHiddenPagination">
                         <app-pagination (productOnSpecifiedPage)="displayProductOnSpecifiedPage($event)"></app-pagination>
-              </section>
+                </section>
   </div>
   <app-footer class="footer"></app-footer>
 </main>

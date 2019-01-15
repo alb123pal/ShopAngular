@@ -11,6 +11,7 @@ import { DataService } from '../../services/product-data.service';
 export class ProductListComponentComponent implements OnInit {
 
   isHiddenFilterOptions = false;
+  isHiddenPagination = false;
   isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
   allProducts;
   product: any;
@@ -26,6 +27,10 @@ export class ProductListComponentComponent implements OnInit {
   ratingOptions = [
     1, 2, 3, 4, 5
   ];
+  firstPage = {
+    'min': 1,
+    'max': 4
+  };
 
   constructor(private _userService: UserService, private _route: Router, private _productDetails: DataService) {
   }
@@ -33,10 +38,6 @@ export class ProductListComponentComponent implements OnInit {
   ngOnInit() {
     this._userService.getProducts().subscribe(
       (res) => {
-        const firstPage = {
-          'min': 1,
-          'max': 4
-        };
         this.allProducts = res.body;
         for (let i = 0; i < this.allProducts.length; i++) {
           this.allProducts[i].activeStar = [];
@@ -48,13 +49,14 @@ export class ProductListComponentComponent implements OnInit {
             this.allProducts[i].inActiveStar.push('1');
           }
         }
-        this.displayProductOnSpecifiedPage(firstPage);
+        this.displayProductOnSpecifiedPage(this.firstPage);
       }
     );
   }
 
   applyFilter(): void {
     const params: any = {};
+    this.isHiddenPagination = true;
     // tslint:disable-next-line:no-unused-expression
     this.gender !== undefined ? params.gender = this.gender : null;
     // tslint:disable-next-line:no-unused-expression
@@ -71,16 +73,22 @@ export class ProductListComponentComponent implements OnInit {
 
   clearFilter(): void {
     this.productFilter = {};
+    this.isHiddenPagination = false;
+    this.displayProductOnSpecifiedPage(this.firstPage);
   }
 
   searchProducts(event: any): void {
     this.productFilter = {};
     if (event.target.value === '') {
       this.productFilter = {};
+      this.isHiddenPagination = false;
+      this.displayProductOnSpecifiedPage(this.firstPage);
+      return ;
     }
     this.productFilter = {
       'searchProduct': event.target.value
     };
+    this.isHiddenPagination = true;
   }
 
   showHideFilterOptions(): void {
