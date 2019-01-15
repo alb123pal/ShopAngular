@@ -44,7 +44,7 @@ export class LoginShopComponentComponent implements OnInit {
     }
   }
 
-  authorizeUser() {
+  authorizeUser(): void {
     this._userService.authorizeUser(this._login, this._password).subscribe(
       (res) => {
         const sessionToken = res.headers.get('session-token');
@@ -54,10 +54,10 @@ export class LoginShopComponentComponent implements OnInit {
 
         this._userService.getUsers().subscribe(
           (responseRole) => {
-            let isUser;
+            let isUser: number;
             const loggedUser = this.verifyUser(responseRole.body);
-            localStorage.setItem('login', loggedUser.login);
-            isUser = loggedUser.roleId;
+            localStorage.setItem('login', loggedUser['login']);
+            isUser = loggedUser['roleId'];
 
             if (isUser) {
               localStorage.setItem('isAdmin', 'false');
@@ -75,9 +75,9 @@ export class LoginShopComponentComponent implements OnInit {
     );
   }
 
-  verifyUser(allUsers) {
+  verifyUser(allUsers): Object {
     const login = localStorage.getItem('login');
-    let loggedUser;
+    let loggedUser: Object;
     allUsers.find( user => {
       if (user.login === login) {
         loggedUser = user;

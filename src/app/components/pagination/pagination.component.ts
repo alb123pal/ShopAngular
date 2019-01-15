@@ -11,6 +11,7 @@ export class PaginationComponent implements OnInit {
   perPage = 4;
   pagesToShow = 3;
   @Output() productOnSpecifiedPage: EventEmitter<Object> = new EventEmitter<Object>();
+
   constructor() { }
 
   ngOnInit() {

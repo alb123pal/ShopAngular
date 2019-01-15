@@ -52,6 +52,7 @@ export class ProductListComponentComponent implements OnInit {
       }
     );
   }
+
   applyFilter(): void {
     const params: any = {};
     // tslint:disable-next-line:no-unused-expression
@@ -72,7 +73,7 @@ export class ProductListComponentComponent implements OnInit {
     this.productFilter = {};
   }
 
-  searchProducts(event): void {
+  searchProducts(event: any): void {
     this.productFilter = {};
     if (event.target.value === '') {
       this.productFilter = {};
@@ -82,19 +83,19 @@ export class ProductListComponentComponent implements OnInit {
     };
   }
 
-  showHideFilterOptions() {
+  showHideFilterOptions(): void {
     this.isHiddenFilterOptions = !this.isHiddenFilterOptions;
   }
 
-  selectGender(gender): void {
+  selectGender(gender: string): void {
     this.gender = gender;
   }
 
-  selectCategory(category): void {
+  selectCategory(category: string): void {
     this.category = +category;
   }
 
-  selectRating(rating): void {
+  selectRating(rating: number): void {
     this.rating = ++rating;
   }
 
@@ -108,15 +109,15 @@ export class ProductListComponentComponent implements OnInit {
     this.priceTo = price;
   }
 
-  navigateToDetails(idProduct) {
-    this.product = this.allProducts.filter(obj => {
-      return obj.id === idProduct;
+  navigateToDetails(idProduct: number): void {
+    this.product = this.allProducts.filter(product => {
+      return product.id === idProduct;
     });
     this._productDetails.changeProduct(this.product);
     this._route.navigate(['/details', {'id': idProduct}]);
   }
 
-  displayProductOnSpecifiedPage(specifiedProducts): void {
+  displayProductOnSpecifiedPage(specifiedProducts: Object): void {
     this.productFilter = {
       'displaySpecifiedPage': specifiedProducts
     };
