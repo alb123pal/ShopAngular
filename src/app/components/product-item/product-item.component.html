@@ -12,8 +12,8 @@
             </div>
             <div class="article-item__content-info">
                     <span class="item-prize"><span class="item-prize--currency">$</span>{{product.cost}}</span>
-                    <button [hidden]="!isAdmin" class="button">Delete products</button>  
-                    <button class="button" (click)="navigateToDetails(product.id)">Show more</button>  
+                    <app-button [isHidden]="!isAdmin" [class]="button" [buttonCaption]="'Delete products'"></app-button>  
+                    <app-button (click)="navigateToDetails(product.id)" [buttonCaption]="'Show more'"></app-button>  
             </div>
     </div>
 </article>

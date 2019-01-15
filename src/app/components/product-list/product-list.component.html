@@ -3,8 +3,8 @@
         <app-header class="header-component"></app-header>
         <div class="page-wrapper-content">
                 <aside class="filters-panel">
-                        <div class="add-products" [hidden]="!isAdmin">
-                                <app-button [class]="'button--blue'" [buttonCaption]="'Add products'"></app-button>
+                        <div class="add-products">
+                                <app-button [isHidden]="!isAdmin" [class]="'button--blue'" [buttonCaption]="'Add products'"></app-button>
                         </div>
                         <div class="filters-panel-options">
                                 <app-button (click)="showHideFilterOptions()" [class]="'button__filter-options'" [buttonCaption]="'Filter options'"></app-button>

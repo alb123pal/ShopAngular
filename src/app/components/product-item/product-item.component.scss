@@ -68,18 +68,9 @@
           }
         }
   
-        .button {
-          border: none;
-          border-radius: 10px;
-          clear: right;
-          color: $white-color;
-          float: right;
-          font-size: 12px;
-          font-weight: 700;
-          height: 40px;
-          width: $button-width + 15px;
-          background: -webkit-linear-gradient(bottom, #007d68, #00bcc0);
-        }
+        .button:last-child {
+            grid-column: 3;
+          }
       }
   
       p {
