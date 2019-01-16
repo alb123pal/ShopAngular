@@ -5,7 +5,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './error-server.component.html',
   styleUrls: ['./error-server.component.scss']
 })
-export class ErrorServerComponentComponent implements OnInit, OnDestroy {
+export class ErrorServerComponent implements OnInit, OnDestroy {
 
   constructor() { }
 

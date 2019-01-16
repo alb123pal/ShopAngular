@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginShopComponentComponent } from './components/login-shop/login-shop.component';
+import { LoginShopComponent } from './components/login-shop/login-shop.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductDetailsComponentComponent } from './components/product-details/product-details.component';
-import { ErrorPageComponentComponent } from './components/error-page/error-page.component';
-import { ErrorServerComponentComponent } from './components/error-server/error-server.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { ErrorServerComponent } from './components/error-server/error-server.component';
 
 import { ProductListCainActivateGuard } from './services/product-list-can-activate-guard';
 import { LoginCanActivateGuard } from './services/login-can-activate-guard';
@@ -14,7 +14,7 @@ import { ProductDeatilsCainActivateGuard } from './services/product-details-can-
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginShopComponentComponent,
+    component: LoginShopComponent,
     canActivate: [LoginCanActivateGuard]
   },
   {
@@ -24,16 +24,16 @@ const routes: Routes = [
   },
   {
     path: 'details',
-    component: ProductDetailsComponentComponent,
+    component: ProductDetailsComponent,
     canActivate: [ProductDeatilsCainActivateGuard]
   },
   {
     path: 'error',
-    component: ErrorPageComponentComponent
+    component: ErrorPageComponent
   },
   {
     path: 'server-error',
-    component: ErrorServerComponentComponent
+    component: ErrorServerComponent
   },
   {
     path: '',

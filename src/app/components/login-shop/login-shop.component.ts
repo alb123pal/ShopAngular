@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './login-shop.component.html',
   styleUrls: ['./login-shop.component.scss']
 })
-export class LoginShopComponentComponent implements OnInit {
+export class LoginShopComponent implements OnInit {
   private _login: string;
   private _password: string;
   private _validInputModel: Object;

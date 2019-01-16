@@ -8,7 +8,7 @@ import { DataService } from '../../services/product-data.service';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
-export class ProductDetailsComponentComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit {
   userName = '';
   product: any;
   isOpenEditModal = false;
