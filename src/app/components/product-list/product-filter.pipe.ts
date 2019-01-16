@@ -1,4 +1,4 @@
-import { PipeTransform, Pipe, ɵConsole } from '@angular/core';
+import { PipeTransform, Pipe } from '@angular/core';
 
 @Pipe({
     name: 'productFilter'
@@ -14,6 +14,7 @@ export class ProductFilterPipe implements PipeTransform {
             const filteredProduct = products.filter( (product: any) => {
                 return product.name.toLowerCase().indexOf(filter.searchProduct.toLowerCase()) !== -1;
             });
+            this.displayCaptionWhileEmptyList(filteredProduct);
             return filteredProduct;
         } else if (!!filter.displaySpecifiedPage) {
             const maxIdProduct = filter.displaySpecifiedPage.max,

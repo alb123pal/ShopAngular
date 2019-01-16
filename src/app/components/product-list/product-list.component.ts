@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
 
   isHiddenFilterOptions = false;
   isHiddenPagination = false;
+  isHiddenEmptyList = true;
   isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
   allProducts;
   productDetails: any;
@@ -68,11 +69,13 @@ export class ProductListComponent implements OnInit {
     // tslint:disable-next-line:no-unused-expression
     this.priceToValue !== undefined ? filterParams.priceTo = +this.priceToValue : null;
     // tslint:disable-next-line:no-unused-expression
+    this.isHiddenEmptyList = false;
     this.productFilter = filterParams;
   }
 
   clearFilter(): void {
     this.productFilter = {};
+    this.isHiddenEmptyList = true;
     this.isHiddenPagination = false;
     this.displayProductOnSpecifiedPage(this.productsOnFirstPage);
   }
@@ -82,13 +85,15 @@ export class ProductListComponent implements OnInit {
     if (event.target.value === '') {
       this.productFilter = {};
       this.isHiddenPagination = false;
+      this.isHiddenEmptyList = true;
       this.displayProductOnSpecifiedPage(this.productsOnFirstPage);
       return ;
     }
+    this.isHiddenEmptyList = false;
+    this.isHiddenPagination = true;
     this.productFilter = {
       'searchProduct': event.target.value
     };
-    this.isHiddenPagination = true;
   }
 
   showHideFilterOptions(): void {

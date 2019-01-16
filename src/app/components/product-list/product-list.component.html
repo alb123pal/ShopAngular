@@ -37,7 +37,7 @@
                                 </div>
                         </div>
                 </aside>
-                <section id="emptyList" class="list-articles__empty-list" *ngIf="productFilter">
+                <section id="emptyList" class="list-articles__empty-list" *ngIf="!isHiddenEmptyList">
                         <h1>Nie znaleziono ofert dla wprowadzonej frazy</h1>
                 </section>
                 <section class="list-articles">
