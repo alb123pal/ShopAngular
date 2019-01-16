@@ -11,11 +11,9 @@ export class ErrorPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    document.getElementsByTagName('body')[0].classList.add('error');
   }
 
   ngOnDestroy() {
-    document.getElementsByTagName('body')[0].classList.remove('error');
   }
 
 }
