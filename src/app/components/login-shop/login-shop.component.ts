@@ -11,7 +11,7 @@ export class LoginShopComponentComponent implements OnInit {
   private _login: string;
   private _password: string;
   private _validInputModel: Object;
-  message = '';
+  errorMessage = '';
   isError = true;
 
   constructor(private _userService: UserService, private _router: Router) { }
@@ -26,16 +26,16 @@ export class LoginShopComponentComponent implements OnInit {
   setLogin(login: Object): void {
     this._login = login['value'];
     this._validInputModel['validLogin'] = login['valid'];
-    this.checkIsError();
+    this.checkIsAnError();
   }
 
   setPassword(password: Object): void {
     this._password = password['value'];
     this._validInputModel['validPassword'] = password['valid'];
-    this.checkIsError();
+    this.checkIsAnError();
   }
 
-  checkIsError(): void {
+  checkIsAnError(): void {
     const isValidCredentials = this._validInputModel['validPassword'] && this._validInputModel['validLogin'];
     if (isValidCredentials) {
       this.isError = false;
@@ -54,12 +54,12 @@ export class LoginShopComponentComponent implements OnInit {
 
         this._userService.getUsers().subscribe(
           (responseRole) => {
-            let isUser: number;
+            let userRole: number;
             const loggedUser = this.verifyUser(responseRole.body);
             localStorage.setItem('login', loggedUser['login']);
-            isUser = loggedUser['roleId'];
+            userRole = loggedUser['roleId'];
 
-            if (isUser) {
+            if (userRole) {
               localStorage.setItem('isAdmin', 'false');
             } else {
               localStorage.setItem('isAdmin', 'true');
@@ -69,8 +69,8 @@ export class LoginShopComponentComponent implements OnInit {
           }
         );
       },
-      (error) => {
-        this.message = 'You enter wrong login or password';
+      () => {
+        this.errorMessage = 'You enter wrong login or password';
       }
     );
   }

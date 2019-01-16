@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: Object;
-  @Output() sendIdProduct: EventEmitter<number> = new EventEmitter<number>();
+  @Output() idProduct: EventEmitter<number> = new EventEmitter<number>();
   isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
 
   constructor() { }
@@ -16,6 +16,6 @@ export class ProductItemComponent implements OnInit {
   }
 
   navigateToDetails(idProduct: number) {
-    this.sendIdProduct.emit(idProduct);
+    this.idProduct.emit(idProduct);
   }
 }

@@ -7,7 +7,7 @@ import { catchError} from 'rxjs/operators';
 export class UserService {
     constructor(private httpClient: HttpClient) {}
     baseUrl = 'http://localhost:3000/';
-
+    
     getUser() {
         return ['stasiek', 'franek'];
     }

@@ -6,7 +6,7 @@
           </div>
           <div class="login-modal__content" (inputLoginValue)="setLogin($event)">
               <div class="login-modal-info" [class.login-modal-info--error]="message">
-                  <h2>{{message}}</h2>
+                  <h2>{{errorMessage}}</h2>
               </div>
               <form #loginForm="ngForm" (ngSubmit)="authorizeUser()">
                   <app-input-login [field]="'login'" (inputLoginValue)="setLogin($event)"></app-input-login>

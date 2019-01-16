@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginShopComponentComponent } from './components/login-shop/login-shop.component';
-import { ProductListComponentComponent } from './components/product-list/product-list.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailsComponentComponent } from './components/product-details/product-details.component';
 import { ErrorPageComponentComponent } from './components/error-page/error-page.component';
 import { ErrorServerComponentComponent } from './components/error-server/error-server.component';
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'lists',
-    component: ProductListComponentComponent,
+    component: ProductListComponent,
     canActivate: [ProductListCainActivateGuard]
   },
   {

@@ -8,26 +8,26 @@ import { DataService } from '../../services/product-data.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponentComponent implements OnInit {
+export class ProductListComponent implements OnInit {
 
   isHiddenFilterOptions = false;
   isHiddenPagination = false;
   isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
   allProducts;
-  product: any;
+  productDetails: any;
   productFilter: any;
-  category: number;
-  rating: number;
-  priceFrom: number;
-  priceTo: number;
-  gender: string;
+  categoryValue: number;
+  ratingValue: number;
+  priceFromValue: number;
+  priceToValue: number;
+  genderValue: string;
   categoryOptions = [
     'Wear', 'Jeans', 'Coats', 'Sweaters', 'Boats',
   ];
   ratingOptions = [
     1, 2, 3, 4, 5
   ];
-  firstPage = {
+  productsOnFirstPage = {
     'min': 1,
     'max': 4
   };
@@ -49,32 +49,32 @@ export class ProductListComponentComponent implements OnInit {
             this.allProducts[i].inActiveStar.push('1');
           }
         }
-        this.displayProductOnSpecifiedPage(this.firstPage);
+        this.displayProductOnSpecifiedPage(this.productsOnFirstPage);
       }
     );
   }
 
   applyFilter(): void {
-    const params: any = {};
+    const filterParams: any = {};
     this.isHiddenPagination = true;
     // tslint:disable-next-line:no-unused-expression
-    this.gender !== undefined ? params.gender = this.gender : null;
+    this.genderValue !== undefined ? filterParams.gender = this.genderValue : null;
     // tslint:disable-next-line:no-unused-expression
-    this.category !== undefined ? params.categoryId = +this.category : null;
+    this.categoryValue !== undefined ? filterParams.categoryId = +this.categoryValue : null;
     // tslint:disable-next-line:no-unused-expression
-    this.rating !== undefined ? params.rating = +this.rating : null;
+    this.ratingValue !== undefined ? filterParams.rating = +this.ratingValue : null;
     // tslint:disable-next-line:no-unused-expression
-    this.priceFrom !== undefined ? params.priceFrom = +this.priceFrom : null;
+    this.priceFromValue !== undefined ? filterParams.priceFrom = +this.priceFromValue : null;
     // tslint:disable-next-line:no-unused-expression
-    this.priceTo !== undefined ? params.priceTo = +this.priceTo : null;
+    this.priceToValue !== undefined ? filterParams.priceTo = +this.priceToValue : null;
     // tslint:disable-next-line:no-unused-expression
-    this.productFilter = params;
+    this.productFilter = filterParams;
   }
 
   clearFilter(): void {
     this.productFilter = {};
     this.isHiddenPagination = false;
-    this.displayProductOnSpecifiedPage(this.firstPage);
+    this.displayProductOnSpecifiedPage(this.productsOnFirstPage);
   }
 
   searchProducts(event: any): void {
@@ -82,7 +82,7 @@ export class ProductListComponentComponent implements OnInit {
     if (event.target.value === '') {
       this.productFilter = {};
       this.isHiddenPagination = false;
-      this.displayProductOnSpecifiedPage(this.firstPage);
+      this.displayProductOnSpecifiedPage(this.productsOnFirstPage);
       return ;
     }
     this.productFilter = {
@@ -96,32 +96,32 @@ export class ProductListComponentComponent implements OnInit {
   }
 
   selectGender(gender: string): void {
-    this.gender = gender;
+    this.genderValue = gender;
   }
 
   selectCategory(category: string): void {
-    this.category = +category;
+    this.categoryValue = +category;
   }
 
   selectRating(rating: number): void {
-    this.rating = ++rating;
+    this.ratingValue = ++rating;
   }
 
   setMinimumPrice(event): void {
     const price = +event.target.value;
-    this.priceFrom = price;
+    this.priceFromValue = price;
   }
 
   setMaximumPrice(event): void {
     const price = +event.target.value;
-    this.priceTo = price;
+    this.priceToValue = price;
   }
 
   navigateToDetails(idProduct: number): void {
-    this.product = this.allProducts.filter(product => {
+    this.productDetails = this.allProducts.filter(product => {
       return product.id === idProduct;
     });
-    this._productDetails.changeProduct(this.product);
+    this._productDetails.changeProduct(this.productDetails);
     this._route.navigate(['/details', {'id': idProduct}]);
   }
 

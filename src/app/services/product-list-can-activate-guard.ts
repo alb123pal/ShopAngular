@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivate } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
 
 @Injectable()
 export class ProductListCainActivateGuard implements CanActivate {
   constructor(private _router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (JSON.parse(localStorage.getItem('isAuth')) === true) {
+  canActivate(): boolean {
+    const isLogged = JSON.parse(localStorage.getItem('isAuth')) === true;
+    if (isLogged) {
       return true;
     } else {
       this._router.navigate(['/login']);

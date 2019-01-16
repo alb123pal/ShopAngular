@@ -40,17 +40,17 @@ export class PaginationComponent implements OnInit {
   }
 
   onNext(): void {
-    this.page++;
-    this.displayProductOnSpecifiedPage();
+   this.page++;
+   this.displayProductOnSpecifiedPage();
   }
 
-displayProductOnSpecifiedPage(): void {
-  const productsOnSpecifiedPage = {
-    'min': this.getMin(),
-    'max': this.getMax()
-  };
-  this.productOnSpecifiedPage.emit(productsOnSpecifiedPage);
-}
+  displayProductOnSpecifiedPage(): void {
+    const productsOnSpecifiedPage = {
+      'min': this.getMin(),
+     'max': this.getMax()
+   };
+   this.productOnSpecifiedPage.emit(productsOnSpecifiedPage);
+  }
 
   totalPages(): number {
     return Math.ceil(this.count / this.perPage) || 0;

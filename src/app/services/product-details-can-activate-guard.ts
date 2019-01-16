@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivate } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
 import { DataService } from './product-data.service';
 
 @Injectable()
 export class ProductDeatilsCainActivateGuard implements CanActivate {
   constructor(private _router: Router, private _productDetails: DataService) {}
-  product;
+  product: Object;
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (JSON.parse(localStorage.getItem('isAuth')) === true) {
+  canActivate(): boolean {
+    const isLogged = JSON.parse(localStorage.getItem('isAuth')) === true;
+
+    if (isLogged) {
       this._productDetails.currentProduct.subscribe(product => this.product = product);
-      if (!!this.product[0]) {
+      const isExistDetailsProduct = !!this.product[0];
+      if (isExistDetailsProduct) {
         return true;
       } else {
         this._router.navigate(['/lists']);
-      return false;
+        return false;
       }
     } else {
       this._router.navigate(['/login']);

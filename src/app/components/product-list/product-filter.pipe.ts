@@ -8,32 +8,34 @@ export class ProductFilterPipe implements PipeTransform {
         if (!products || ! filter) {
             return products;
         }
-        if (filter.searchProduct !== 'searchProduct' && filter.searchProduct !== undefined) {
+        const isFilterByNameProduct = filter.searchProduct !== 'searchProduct' && filter.searchProduct !== undefined;
+
+        if (isFilterByNameProduct) {
             const filteredProduct = products.filter( (product: any) => {
                 return product.name.toLowerCase().indexOf(filter.searchProduct.toLowerCase()) !== -1;
             });
             return filteredProduct;
         } else if (!!filter.displaySpecifiedPage) {
-            const max = filter.displaySpecifiedPage.max,
-            min = filter.displaySpecifiedPage.min - 1;
-            const productsOnPage = this.displayProductsOnSpecifiedPage(products, min, max);
+            const maxIdProduct = filter.displaySpecifiedPage.max,
+                minIdProduct = filter.displaySpecifiedPage.min - 1,
+                productsOnPage = this.displayProductsOnSpecifiedPage(products, minIdProduct, maxIdProduct);
             return productsOnPage;
         } else {
             const filteredProduct = products.filter(item => {
                 const notMatchingField = Object.keys(filter)
-                                             .find( (key) => {
-                                                 let returnKey;
-                                                 if (key === 'priceFrom') {
-                                                    if (filter[key] > item['cost']) {
-                                                        returnKey = key;
+                                             .find( (filterType) => {
+                                                 let returnKey: any;
+                                                 if (filterType === 'priceFrom') {
+                                                    if (filter[filterType] > item['cost']) {
+                                                        returnKey = filterType;
                                                     }
-                                                 } else if (key === 'priceTo') {
-                                                    if (filter[key] < item['cost']) {
-                                                        returnKey = key;
+                                                 } else if (filterType === 'priceTo') {
+                                                    if (filter[filterType] < item['cost']) {
+                                                        returnKey = filterType;
                                                     }
                                                  } else {
-                                                    if (item[key] !== filter[key]) {
-                                                        returnKey = key;
+                                                    if (item[filterType] !== filter[filterType]) {
+                                                        returnKey = filterType;
                                                      }
                                                  }
                                                  return returnKey;
@@ -44,6 +46,7 @@ export class ProductFilterPipe implements PipeTransform {
             return filteredProduct;
 
         }}
+
         displayCaptionWhileEmptyList(filteredProduct) {
             if (filteredProduct.length === 0) {
                 document.getElementById('emptyList').style.display = 'block';
@@ -51,6 +54,7 @@ export class ProductFilterPipe implements PipeTransform {
                 document.getElementById('emptyList').style.display = 'none';
             }
         }
+
         displayProductsOnSpecifiedPage(products, min = 0, max = 4) {
             const productsOnPage = products.slice(min, max);
             return productsOnPage;

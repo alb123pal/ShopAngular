@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LoginShopComponentComponent } from './components/login-shop/login-shop.component';
-import { ProductListComponentComponent } from './components/product-list/product-list.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductFilterPipe } from './components/product-list/product-filter.pipe';
 import { ProductDetailsComponentComponent } from './components/product-details/product-details.component';
 import { ErrorPageComponentComponent } from './components/error-page/error-page.component';
@@ -36,7 +36,7 @@ import { ProductDetailsAdminEditComponent } from './components/product-details-a
   declarations: [
     AppComponent,
     LoginShopComponentComponent,
-    ProductListComponentComponent,
+    ProductListComponent,
     ProductDetailsComponentComponent,
     ErrorPageComponentComponent,
     ErrorServerComponentComponent,
