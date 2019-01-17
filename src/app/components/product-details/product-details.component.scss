@@ -64,17 +64,6 @@
 
   &-info {
 
-    .item-prize {
-      font-size: 22px;
-      font-weight: 700;
-      position: relative;
-      top: 3px;
-
-      &--currency {
-        color: $green-color;
-      }
-    }
-
     .item-sold {
       color: red;
       font-size: 12px;

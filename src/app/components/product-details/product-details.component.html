@@ -18,7 +18,7 @@
                                 </div>
                                 <hr />
                                 <div class="article-item__content-info">
-                                        <span class="item-prize"><span class="item-prize--currency">$</span>{{product[0].cost}}</span>
+                                        <app-product-price [price]="product[0].cost"></app-product-price>
                                         <span>({{product[0].count - product[0].soldCount}} times left)</span>
                                         <app-button [isDisabled]="product[0].count - product[0].soldCount == 0" [buttonCaption]="'Buy'"></app-button>
                                 </div>
