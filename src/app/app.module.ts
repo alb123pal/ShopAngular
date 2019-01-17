@@ -32,6 +32,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ProductDetailsAdminEditComponent } from './components/product-details-admin-edit/product-details-admin-edit.component';
 import { PanelStarsComponent } from './components/panel-stars/panel-stars.component';
+import { ProductPriceComponent } from './components/product-price/product-price.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { PanelStarsComponent } from './components/panel-stars/panel-stars.compon
     ProductItemComponent,
     PaginationComponent,
     ProductDetailsAdminEditComponent,
-    PanelStarsComponent
+    PanelStarsComponent,
+    ProductPriceComponent
   ],
   imports: [
     BrowserModule,

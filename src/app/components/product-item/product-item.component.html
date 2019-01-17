@@ -8,7 +8,7 @@
                     <p>{{product.description}}</p>
             </div>
             <div class="article-item__content-info">
-                    <span class="item-prize"><span class="item-prize--currency">$</span>{{product.cost}}</span>
+                    <app-product-price [price]="product.cost"></app-product-price>
                     <app-button [isHidden]="!isAdmin" [class]="button" [buttonCaption]="'Delete products'"></app-button>  
                     <app-button (click)="navigateToDetails(product.id)" [buttonCaption]="'Show more'"></app-button>  
             </div>

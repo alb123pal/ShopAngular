@@ -1,0 +1,12 @@
+@import  'palette.scss';
+
+.item-prize {
+    font-size: 22px;
+    font-weight: 700;
+    position: relative;
+    top: 3px;
+
+    &--currency {
+      color: $green-color;
+    }
+  }
