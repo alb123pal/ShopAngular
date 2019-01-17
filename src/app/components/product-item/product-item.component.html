@@ -1,9 +1,6 @@
 <article class="article-item">
     <img src={{product.image}}>
-    <div class="panel-stars">
-            <span class="star star--active" *ngFor="let activeStar of product.activeStar"></span>
-            <span class="star star--inactive" *ngFor="let activeStar of product.inActiveStar"></span>
-    </div>
+    <app-panel-stars [activeStar]="product.activeStar" [inactiveStar]="product.inActiveStar"></app-panel-stars>
     <div class="article-item__content">
             <h2>{{product.name}}</h2>
             <hr />

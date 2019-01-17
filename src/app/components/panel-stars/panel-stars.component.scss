@@ -1,0 +1,28 @@
+@import 'variables.scss';
+@import 'palette.scss';
+
+.panel-stars {
+    background-color: #080808;
+    opacity: 0.8;
+    width: 100%;
+  
+    :first-child {
+      margin-left: 15px;
+    }
+  
+    .star {
+      display: inline-block;
+      height: 20px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      width: 22px;
+  
+      &--active {
+        background: url('/assets/star-active.svg') no-repeat;
+      }
+  
+      &--inactive {
+        background: url('/assets/star-inactive.svg') no-repeat;
+      }
+    }
+  }

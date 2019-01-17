@@ -31,6 +31,7 @@ import { DropdownComponent } from './components/form-components/dropdown/dropdow
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ProductDetailsAdminEditComponent } from './components/product-details-admin-edit/product-details-admin-edit.component';
+import { PanelStarsComponent } from './components/panel-stars/panel-stars.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProductDetailsAdminEditComponent } from './components/product-details-a
     DropdownComponent,
     ProductItemComponent,
     PaginationComponent,
-    ProductDetailsAdminEditComponent
+    ProductDetailsAdminEditComponent,
+    PanelStarsComponent
   ],
   imports: [
     BrowserModule,
