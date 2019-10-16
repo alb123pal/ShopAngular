@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/interceptor.service';
 
+import { StoreModule } from '@ngrx/store';
+import { postReducer } from './reducers/post-reducer';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -62,6 +65,9 @@ import { ProductPriceComponent } from './components/product-price/product-price.
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot({
+      post: postReducer
+    })
   ],
   providers: [
   {

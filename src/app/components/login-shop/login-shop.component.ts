@@ -2,6 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { Post } from '../../reducers/post-model';
+import * as PostActions from '../../reducers/post.action';
+
+interface AppState {
+  post: Post;
+}
+
 @Component({
   selector: 'app-login-shop-component',
   templateUrl: './login-shop.component.html',
@@ -14,13 +24,16 @@ export class LoginShopComponent implements OnInit {
   errorMessage = '';
   isError = true;
 
-  constructor(private _userService: UserService, private _router: Router) { }
+  post: Observable<Post>;
+
+  constructor(private _userService: UserService, private _router: Router, private _store: Store<AppState>) { }
 
   ngOnInit() {
     this._validInputModel = {
       validLogin: false,
       validPassword: false
     };
+    this.post = this._store.select('post');
   }
 
   setLogin(login: Object): void {
@@ -56,6 +69,9 @@ export class LoginShopComponent implements OnInit {
           (responseRole) => {
             let userRole: number;
             const loggedUser = this.verifyUser(responseRole.body);
+
+            this._store.dispatch(new PostActions.SetLogin(loggedUser['login']));
+
             localStorage.setItem('login', loggedUser['login']);
             userRole = loggedUser['roleId'];
 

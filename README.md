@@ -1,3 +1,11 @@
+# Run application locally
+
+Go to src/server
+Run `node server`
+
+Open another terminal
+Run `ng serve -o`
+
 # GridUAngularShop
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
