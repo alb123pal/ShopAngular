@@ -9,7 +9,7 @@ export class InputPasswordComponent implements OnInit {
   private _password: string;
   @Input() field: string;
   @Output() inputPasswordValue: EventEmitter<Object> = new EventEmitter<Object>();
-  @ViewChild('passwordInput') passwordInputRef: ElementRef;
+  @ViewChild('passwordInput', { static: true }) passwordInputRef: ElementRef;
 
   get password(): string {
     return this._password;

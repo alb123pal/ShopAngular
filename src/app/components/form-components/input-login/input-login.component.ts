@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild }
 export class InputFormComponent implements OnInit {
   @Input() field: string;
   @Output() inputLoginValue: EventEmitter<Object> = new EventEmitter<Object>();
-  @ViewChild('loginInput') loginInputRef: ElementRef;
+  @ViewChild('loginInput', { static: true }) loginInputRef: ElementRef;
   private _login: string;
 
   get login(): string {

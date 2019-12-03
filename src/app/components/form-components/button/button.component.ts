@@ -10,7 +10,7 @@ export class ButtonComponent implements OnInit {
   @Input() isDisabled: boolean;
   @Input() isHidden: boolean;
   @Input() class: string;
-  @ViewChild('loginInput') loginInputRef: ElementRef;
+  @ViewChild('loginInput', { static: false }) loginInputRef: ElementRef;
 
   constructor() { }
 
