@@ -5,12 +5,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Post } from '../../reducers/post-model';
-import * as PostActions from '../../reducers/post.action';
-
-interface AppState {
-  post: Post;
-}
+import { UserState } from '../../store/models/user.model';
+import * as userActions from '../../store/actions/active-user.action';
 
 @Component({
   selector: 'app-login-shop-component',
@@ -24,16 +20,17 @@ export class LoginShopComponent implements OnInit {
   errorMessage = '';
   isError = true;
 
-  post: Observable<Post>;
+  loggedInUser: Observable<UserState>;
 
-  constructor(private _userService: UserService, private _router: Router, private _store: Store<AppState>) { }
+  constructor(private _userService: UserService, private _router: Router, private _store: Store<any>) { }
 
   ngOnInit() {
     this._validInputModel = {
       validLogin: false,
       validPassword: false
     };
-    this.post = this._store.select('post');
+
+    this.loggedInUser = this._store.select('activeUser');
   }
 
   setLogin(login: Object): void {
@@ -69,8 +66,11 @@ export class LoginShopComponent implements OnInit {
           (responseRole) => {
             let userRole: number;
             const loggedUser = this.verifyUser(responseRole.body);
-
-            this._store.dispatch(new PostActions.SetLogin(loggedUser['login']));
+            
+            this._store.dispatch(new userActions.CreateActiveUser( {
+              username: loggedUser['login'],
+              roleId: loggedUser['roleId']
+            }));
 
             localStorage.setItem('login', loggedUser['login']);
             userRole = loggedUser['roleId'];

@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { select } from '@ngrx/store';
 import { State } from '@ngrx/store';
-import { Post } from '../../reducers/post-model';
+import { Store } from '@ngrx/store';
 
-interface AppState {
-  post: Post;
-}
+import { UserState } from '../../store/models/user.model';
+import * as userActions from '../../store/actions/active-user.action';
 
 @Component({
   selector: 'app-header',
@@ -16,19 +15,19 @@ interface AppState {
 export class HeaderComponent implements OnInit {
   userName = '';
 
-  constructor(private _route: Router, private _state: State<AppState>) { }
+  constructor(private _route: Router, private _state: State<UserState>, private _store: Store<any>) { }
 
   ngOnInit() {
     this._state.pipe(
-      select('post')
+      select('activeUser')
     ).subscribe((store) => {
-      this.userName = store.loginName;
+      this.userName = store.username;
     });
-
   }
 
   logout(): void {
     localStorage.clear();
+    this._store.dispatch(new userActions.LogoutActiveUser());
     this._route.navigate(['login']);
   }
 }
